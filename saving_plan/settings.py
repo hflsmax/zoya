@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'saving_app'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -58,7 +59,9 @@ ROOT_URLCONF = 'saving_plan.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, "saving_app/templates"),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
