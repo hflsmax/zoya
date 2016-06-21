@@ -3,5 +3,6 @@ from . import views
 
 # Create your views here.
 urlpatterns = [
-    url(r'^(?P<user_id>[0-9]+)/$', views.first_page, name='index'),
+    # url(r'^(?P<user_id>[0-9]+)/$', views.first_page, name='index'),
+    url(r'^$', views.first_page, name='index'),
 ]
