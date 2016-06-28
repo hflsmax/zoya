@@ -3,7 +3,7 @@ from django.shortcuts import render
 def choice_without_id(request):
     # return render(request, 'saving_app/voya-choices.html', {'user_id': user_id})
     print "no id"
-    return render(request, 'saving_app/voya-choices.html', {"user_id": "no id"})
+    return render(request, 'saving_app/voya-choices.html', {"user_id": "1234"})
 
 def choice(request, user_id):
     # return render(request, 'saving_app/voya-choices.html', {'user_id': user_id})
