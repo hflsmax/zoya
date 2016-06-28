@@ -1,6 +1,56 @@
+@font-face {
+	font-family:'Montserrat';
+	src: url('montserrat/Montserrat-Hairline.otf') format('truetype');
+	font-weight: 100;
+}
+
+@font-face {
+	font-family:'Montserrat';
+	src: url('montserrat/Montserrat-UltraLight.otf') format('truetype');
+	font-weight: 200;
+}
+
+@font-face {
+	font-family:'Montserrat';
+	src: url('montserrat/Montserrat-Light.otf') format('truetype');
+	font-weight: 300;
+}
+
+@font-face {
+	font-family:'Montserrat';
+	src: url('montserrat/Montserrat-Regular.otf') format('truetype');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family:'Montserrat';
+	src: url('montserrat/Montserrat-SemiBold.otf') format('truetype');
+	font-weight: 500;
+}
+
+@font-face {
+	font-family:'Montserrat';
+	src: url('montserrat/Montserrat-Bold.otf') format('truetype');
+	font-weight: 600;
+}
+
+@font-face {
+	font-family:'Montserrat';
+	src: url('montserrat/Montserrat-ExtraBold.otf') format('truetype');
+	font-weight: 700;
+}
+
+@font-face {
+	font-family:'Montserrat';
+	src: url('montserrat/Montserrat-Black.otf') format('truetype');
+	font-weight: 800;
+}
+
+
+
 body {
-  padding-top: 100px;
-  margin-bottom:0px;
+  padding-top: 120px;
+  height: 100%;
 
 	background: #f7f7f7 /* For browsers that do not support gradients */
 	background: -webkit-linear-gradient(#f7f7f7, #fff, #f7f7f7); /* For Safari 5.1 to 6.0 */
@@ -8,79 +58,108 @@ body {
 	background: -moz-linear-gradient(#f7f7f7, #fff, #f7f7f7); /* For Firefox 3.6 to 15 */
 	background: linear-gradient(#f7f7f7, white 60%, #f7f7f7); /* Standard syntax */
 
-  font-family: "Arial";
+  font-family: 'Montserrat';
   z-index: 10;
 }
 
-.wrapper {
-	margin: 0 auto;
+html {
+	height:100%;
 }
 
 .footer {
 	background-color: white;
-	position: absolute;
-	right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
+	padding: 15px 0;
+	border-top: 1px solid #cccccc;
 }
 
-.footer-text {
-	margin: 20px 0;
+.footer .text {
+	font-weight:300;
+	font-size:12px;
+	color: #878787;
+	line-height: 1;
+}
+
+.footer .link {
+	color: #d85722;
+	font-weight:300;
+	font-size:12px;
+	text-transform:uppercase;
+	letter-spacing:.75px;
+}
+
+.footer .link:hover {
+	text-decoration:none;
+	font-weight:400;
+}
+
+.footer .logo {
+	color: #d85722;
+	font-weight: 600;
+	padding-top:10px;
+	font-size: 18px;
+	text-transform:uppercase;
+	float:right;
 }
 
 .navbar {
 	background-color: #fff;
-	height: 50px;
-	border-bottom: 1px solid #e4e4e4;
-	box-shadow: 0 3px 5px #e4e4e4;
-	font-family: "Arial";
+	height: 65px;
+	box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.07);
 }
 
 #navbar-text {
 	color: #e16a37;
-	padding-top: 15px;
+	padding-top: 20px;
 	font-weight: 600;
 	font-size: 18px;
+	text-transform:uppercase;
 }
 
 #h1{
-	color: #808080;
+	color: #6e6e6e;
 	text-align: center;
 	font-size: 28px;
 	font-weight: 200;
 }
 
 #h2{
-	color: #808080;
+	color: #888888;
 	text-align: center;
 	text-transform: uppercase;
 	font-size: 20px;
-	font-weight: 200;
+	font-weight: 300;
+	letter-spacing:-.5px;
 }
 
 #h3 {
-	color: #e16a37;
-	font-size:18px;
-	padding-left:25px;
-	padding-right:25px;
+	color: #f47f00;
+	font-size:20px;
+	font-weight:300;
+	padding-left:30px;
+	padding-right:30px;
+}
+
+#h3:hover {
+	text-decoration:none;
 }
 
 #explain {
-	color: #808080;
-	font-size: 18px;
-	max-width: 500px;
+	color: #888;
+	font-size:20px;
+	font-weight:300;
+	max-width: 750px;
 	text-align: center;
 	margin:auto;
 }
 
 #details {
-	color: #808080;
-	font-size: 12px;
+	color: #666666;
+	font-size: 13px;
+	font-weight:200;
 }
 
 #row1 {
-	padding-bottom:100px;
+	padding-bottom:75px;
 	text-align:center;
 }
 
@@ -91,100 +170,136 @@ body {
 
 #row3 {
 	padding-bottom: 100px;
+	padding-left:50px;
+	padding-right:50px;
 }
 
 #side {
 	min-height:80px;
 	margin-top: 30px;
-
 }
 
 #minus {
+	height: 40px;
+	width: 70px;
 	float:right;
+	padding-right:30px;
+	cursor: pointer;
 }
 
 #plus {
+	height: 40px;
+	width: 70px;
 	float:left;
+	padding-left:30px;
+	cursor: pointer;
 }
 
 #value {
 	font-size: 64px;
-	color: #0d9cae;
+	font-weight:200;
+	border: 2px solid #ddd;
+	border-radius:15px;
+	box-shadow: 1px 1px 5px 0px #ddd;
+	color: #0097A9;
+	padding: 0px 20px;
+}
 
+#percent {
+	font-size: 40px;
+	vertical-align:text-top;
+	padding-left:5px;
 }
 
 #choice {
 	background-color: #fff;
-	border: 2px solid #e5e5e5;
+	border: 1px solid #dddddd;
 	text-align: center;
 	padding: 30px;
-	padding-bottom:20px;
-	min-height: 200px;
-	max-width: 300px;
+	padding-bottom:25px;
+	margin:auto;
 }
 
-#select {
-	background: #f17b30 /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#f17b30, #dd5c2c); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#f17b30, #dd5c2c); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#f17b30, #dd5c2c); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#f17b30, #dd5c2c); /* Standard syntax */
+#primary {
+	background: #f58000; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#f58000, #d75426); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f58000, #d75426); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f58000, #d75426); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f58000, #d75426); /* Standard syntax */
 
 	text-transform: uppercase;
-	color: #fcefe5;
-	min-height: 32px;
-	padding-left: 50px;
-	padding-right: 50px;
-	border-radius: 5px;
+	color: #fff;
+	font-size:16px;
+	font-weight:400;
+	letter-spacing:.6px;
+	min-height: 38px;
+	padding-left: 70px;
+	padding-right: 70px;
+	border-radius: 8px;
 	border: 0px;
 }
 
-#submit {
-	background: #f17b30 /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#f17b30, #dd5c2c); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#f17b30, #dd5c2c); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#f17b30, #dd5c2c); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#f17b30, #dd5c2c); /* Standard syntax */
+#primary:hover {
+	box-shadow:1px 3px 5px 0px rgba(110, 110, 110, 0.25);
+}
+
+#primary_large:hover {
+	box-shadow:1px 3px 5px 0px rgba(110, 110, 110, 0.25);
+}
+
+#secondary:hover {
+	box-shadow:1px 3px 5px 0px rgba(110, 110, 110, 0.25);
+}
+
+#primary_large {
+	background: #f58000; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#f58000, #d75426); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f58000, #d75426); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f58000, #d75426); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f58000, #d75426); /* Standard syntax */
 
 	text-transform: uppercase;
 	font-size: 20px;
-	color: #fcefe5;
-	padding-left: 40px;
-	padding-right: 40px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-radius: 5px;
+	letter-spacing:.6px;
+	color: #fff;
+	min-height: 38px;
+	padding: 10px 70px;
+	border-radius: 8px;
 	border: 0px;
 }
 
-#return {
+#secondary {
 	background: #fff;
-  
-	text-transform: uppercase;
-	padding-left: 40px;
-	padding-right: 40px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-radius: 5px;
-	border: 2px solid #e16a37;
-	color: #e16a37;
-	font-weight: bold;
-	font-size: 18px;
-	margin-bottom: 25px;
-}
 
+	text-transform: uppercase;
+	color: #f17b30;
+	font-size:16px;
+	font-weight:400;
+	letter-spacing:.6px;
+	min-height: 38px;
+	padding-left: 70px;
+	padding-right: 70px;
+	border-radius: 8px;
+	border: 2px solid #f17b30;
+}
 
 
 .modal-content
 {
 	margin:auto;
-    margin-top: 75px;
-    
-    padding: 25px;
+    /*width: 60%;*/
+    margin-top: 20vh;
+
+    padding: 10px 25px;
     text-align: center;
-    
+
     background-color: #FFF;
     z-index: 1001; /* Important to set this higher than .modal */
-    
+
     /*display: none;*/
+}
+
+#myModal .modal-dialog
+{
+    width: 800px;
 }
