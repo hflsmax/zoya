@@ -20,6 +20,17 @@
     <link rel="stylesheet" type="text/css" href="{% static 'saving_app/voya-stylesheet.css'%}">
 
 
+    <!-- Hotjar Tracking Code for https://dry-hamlet-57387.herokuapp.com/ -->
+  <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:240473,hjsv:5};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,17 +45,17 @@
 
      <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
+
       <div class="container">
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-             <li id="navbar-text">VOYA</li>
-          </ul>
-          <!-- <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
-          </ul> -->
-        </div><!--/.nav-collapse -->
+        <ul class="nav navbar-nav navbar-left">
+          <li id="navbar-text">ZOYA</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li onclick="alert('Sorry, not implemented yet');" id="navbar-right-text">Need Help?</li>
+          <li onclick="alert('Sorry, not implemented yet');" id="navbar-right-text">Steps to Save</li>
+          <li onclick="alert('Sorry, not implemented yet');" id="navbar-right-text">About My Plan</li>
+          <li onclick="alert('Sorry, not implemented yet');" id="navbar-right-text">Important Information</li>
+        </ul>
       </div>
     </nav>
 
@@ -52,7 +63,7 @@
 
       <div class="row" id="row1">
         <p id ="h1">Hi <span id="name">Sarah</span>, your employer has chosen to automatically enroll you in your plan:</p>
-        <p id = "h2">ABC Employers Savings Plan</p>
+        <p id = "h2">401(K) Employee Savings Plan</p>
       </div>
       <div class="row" id="row2">
         <p id ="h1">Did you know you can save more?</p>
@@ -79,7 +90,7 @@
       			<p id="h3">Let my scheduled automatic enrollment go through.</p>
       			</div>
       			<div class="row">
-      			<button id="primary" data-toggle="modal" data-target="#myModal">Select</button>
+      			<button id="primary" data-toggle="modal" data-target="#myModal2">Select</button>
       			</div>
       		</div>
       	</div>
@@ -98,6 +109,18 @@
     </div>
   </div>
 
+  <div class="footer">
+    <div class="container">
+      <div class="col-md-10" style="padding-left:0px">
+         <p class="text"><a onclick="alert('Sorry, not implemented yet');" class="link">Terms of use</a>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<a onclick="alert('Sorry, not implemented yet');" class="link">Security</a> </p>
+         <p class="text">Text can be entered here.</p>
+       </div>
+       <div class="col-md-2">
+         <p class="logo">ZOYA</p>
+       </div>
+     </div>
+   </div>
+
 
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -111,22 +134,22 @@
     </div>
   </div>
 
+  <div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <p id="h1" style="color:#f47f00; font-size:32px; line-spacing:1.2; padding: 30px 80px">Congratulations!</p>
+        <p id="h1" style="padding-bottom: 60px; font-size: 24px">You have taken the first step towards a secure future.</p>
+        <button id="secondary" style="margin-right:10px" onclick="$('#myModal2').modal('toggle');">Cancel</button>
+        <button id="primary" style="margin-left:10px">Submit</button>
+        <p id="details" style="padding:20px 0px">Click Submit to submit your choice and return to the survey.</p>
+      </div>
+    </div>
+  </div>
+
 
   </body>
 
-  <script>
-    alert("Hello, user_id = " + "{{ user_id }}")
-  </script>
 
-  <!-- Hotjar Tracking Code for https://dry-hamlet-57387.herokuapp.com/ -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:240473,hjsv:5};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+
+
 </html>

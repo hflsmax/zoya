@@ -22,6 +22,18 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{% static 'saving_app/voya-stylesheet.css'%}">
 
+    <!-- Hotjar Tracking Code for https://dry-hamlet-57387.herokuapp.com/ -->
+  <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:240473,hjsv:5};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,16 +43,21 @@
   </head>
   <body>
 
-     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-             <li id="navbar-text">VOYA</li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      <!-- Fixed navbar -->
+     <nav class="navbar navbar-default navbar-fixed-top">
+
+       <div class="container">
+         <ul class="nav navbar-nav navbar-left">
+           <li id="navbar-text">ZOYA</li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+           <li id="navbar-right-text">Need Help?</li>
+           <li id="navbar-right-text">Steps to Save</li>
+           <li id="navbar-right-text">About My Plan</li>
+           <li id="navbar-right-text">Important Information</li>
+         </ul>
+       </div>
+     </nav>
 
     <div class="container" id="main" style="min-height:100%">
 
@@ -64,14 +81,14 @@
 
     </div> <!-- /container -->
 
-     <div class="footer">
-     <div class="container">
+ <div class="footer">
+   <div class="container">
      <div class="col-md-10" style="padding-left:0px">
-        <p class="text"><a href="www.google.com" class="link">Sample Link</a>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<a href="www.google.com" class="link">Another Link</a> </p>
-        <p class="text">This site was built by Carnegie Mellon Researchers in partnership with Voya Services Company.</p>
+        <p class="text"><a href="www.google.com" class="link">Terms of use</a>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<a href="www.google.com" class="link">Security</a> </p>
+        <p class="text">Text can be entered here.</p>
       </div>
       <div class="col-md-2">
-        <p class="logo">Voya</p>
+        <p class="logo">Zoya</p>
       </div>
     </div>
   </div>
@@ -81,8 +98,8 @@
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
-        <p id="h1" style="color:#f47f00; font-size:32px; line-spacing:1.2; padding: 30px 80px"><span id="name">Sarah</span>, are you sure you don't want to save for retirement?</p>
-        <p id="h1" style="padding-bottom: 60px; font-size: 24px">You're passing up on the opportunity to save for your future.</p>
+        <p id="h1" style="color:#f47f00; font-size:32px; line-spacing:1.2; padding: 30px 80px">Congratulations!</p>
+        <p id="h1" style="padding-bottom: 60px; font-size: 24px">You have taken the first step towards a secure future.</p>
         <button id="secondary" style="margin-right:10px" onclick="$('#myModal').modal('toggle');">Cancel</button>
         <button id="primary" style="margin-left:10px">Submit</button>
         <p id="details" style="padding:20px 0px">Click Submit to submit your choice and return to the survey.</p>
@@ -90,28 +107,17 @@
     </div>
   </div>
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script>
       $("#minus").click(function() {
         if (parseInt($("#figure").html()) > 0)
           $("#figure").html(parseInt($("#figure").html()) - 1)
       })
       $("#plus").click(function() {
-        if (parseInt($("#figure").html()) < 100)
+        if (parseInt($("#figure").html()) < 75)
           $("#figure").html(parseInt($("#figure").html()) + 1)
       })
     </script>
   </body>
 
-  <!-- Hotjar Tracking Code for https://dry-hamlet-57387.herokuapp.com/ -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:240473,hjsv:5};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+
 </html>
