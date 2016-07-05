@@ -72,11 +72,11 @@
       </div>
 
       <div class="row" id="row2">
-        <button id="primary_large" data-toggle="modal" data-target="#myModal">Go with this choice</button>
+        <button class="primary_large" id="manual" data-toggle="modal" data-target="#myModal">Go with this choice</button>
       </div>
 
       <div class="row" id="row1" style="padding-bottom:40px">
-        <a href="{% url 'choice' user_id %}" id="h3">More Savings Options <i class="fa fa-angle-right" style="font-weight: 700"></i></a>
+        <a class="h3" id="back" style="cursor: pointer;">More Savings Options <i class="fa fa-angle-right" style="font-weight: 700"></i></a>
       </div>
 
     </div> <!-- /container -->
@@ -100,14 +100,18 @@
       <div class="modal-content">
         <p id="h1" style="color:#f47f00; font-size:32px; line-spacing:1.2; padding: 30px 80px">Congratulations!</p>
         <p id="h1" style="padding-bottom: 60px; font-size: 24px">You have taken the first step towards a secure future.</p>
-        <button id="secondary" style="margin-right:10px" onclick="$('#myModal').modal('toggle');">Cancel</button>
-        <button id="primary" style="margin-left:10px">Submit</button>
+        <button class="secondary" style="margin-right:10px" onclick="$('#myModal').modal('toggle');">Cancel</button>
+        <button class="primary" id="manual_submit" style="margin-left:10px">Submit</button>
         <p id="details" style="padding:20px 0px">Click Submit to submit your choice and return to the survey.</p>
       </div>
     </div>
   </div>
 
     <script>
+    $(document).ready(function(){
+      var startTime = new Date();
+
+
       $("#minus").click(function() {
         if (parseInt($("#figure").html()) > 0)
           $("#figure").html(parseInt($("#figure").html()) - 1)
@@ -116,6 +120,34 @@
         if (parseInt($("#figure").html()) < 75)
           $("#figure").html(parseInt($("#figure").html()) + 1)
       })
+
+
+      user_id = "{{ user_id }}"
+      name = "{{ name }}"
+      clicks = "{{ clicks }}"
+
+      $("#manual").click(function(){
+        clicks += "m"
+      })
+      $("#back").click(function(){
+        clicks += "b"
+        var endTime = new Date()
+        var timeDiff = (endTime - startTime) / 1000
+        $.get("/update", {user_id: user_id, name: name, set_time: timeDiff}, function(data){
+          window.location.href = "{% url 'choice'%}"+"?user_id="+user_id+"&name="+name+"&clicks="+clicks
+        })
+
+      })
+      $("#manual_submit").click(function(){
+        var endTime = new Date();
+        var timeDiff = (endTime - startTime) / 1000;
+        $.get("/update", {user_id: user_id, name: name, set_time: timeDiff, clicks: clicks,
+                          final_choice: "m", rate: $("#figure").html()}, function(data){
+          // SUBMIT TO QUALDRICS
+        })
+      })
+
+    })
     </script>
   </body>
 
