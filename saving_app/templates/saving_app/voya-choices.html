@@ -204,6 +204,7 @@
       $("#no_submit").one("click", function(){
         var endTime = new Date();
         var timeDiff = (endTime - startTime) / 1000;
+        $(window).off('beforeunload')
         $.get("/update", {user_id: user_id, name: name, choice_time: timeDiff, clicks: clicks,
                           final_choice: "n"}, function(data){
           // SUBMIT TO QUALDRICS
@@ -212,6 +213,7 @@
       $("#auto_submit").one("click", function(){
         var endTime = new Date();
         var timeDiff = (endTime - startTime) / 1000;
+        $(window).off('beforeunload')
         $.get("/update", {user_id: user_id, name: name, choice_time: timeDiff, clicks: clicks,
                           final_choice: "a"}, function(data){
           // SUBMIT TO QUALDRICS
