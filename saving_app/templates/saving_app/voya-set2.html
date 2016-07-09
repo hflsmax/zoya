@@ -16,6 +16,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" >
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{% static 'saving_app/voya-stylesheet.css'%}">
@@ -46,7 +51,7 @@
 
        <div class="container">
          <ul class="nav navbar-nav navbar-left">
-           <li id="navbar-text">ZOYA</li>
+           <li id="navbar-text"><img src="{% static 'saving_app/logo.png'%}" height=30></li>
          </ul>
          <ul class="nav navbar-nav navbar-right">
            <li class="navbar-right-text">Need Help?</li>
@@ -59,22 +64,32 @@
 
     <div class="container" id="main" style="min-height:100%">
 
-      <div class="row" id="row1" style="padding-bottom:60px">
-        <p id ="h1">What would you like to set as your contribution?</p>
+     <div class="row" style="margin:0px 50px">
+        <div class="col-md-4 toggle inactive">About Me</div>
+        <div class="col-md-4 toggle active">Enrollment Choices<div class="upside-down-triangle"></div></div>
+        <div class="col-md-4 toggle inactive">Review & Confirm</div>
+       </div>
+
+      <div class="row" id="row1" style="padding-bottom:0px; margin:0px 50px">
+        <p id="h1">What will your monthly income in retirement look like?</p>
+        <p id ="explain">Select an amount from your paycheck:</p>
       </div>
 
-      <div class="row" id="row1">
-      <div class="col-md-5" id="side"><img src="{% static 'saving_app/minus.png'%}" id="minus"></div>
-      <div class="col-md-2" id="value"><span id="figure">6</span><span id="percent">%</span></div>
-      <div class="col-md-5" id="side"><img src="{% static 'saving_app/plus.png'%}" id="plus"></div>
+      <div class="row" id="row1" style="padding:30px; margin:0px 50px">
+        <div class="col-md-5" id="side"><img src="{% static 'saving_app/minus.png'%}" id="minus"></div>
+        <div class="col-md-2" id="value"><span id="figure">6</span><span id="percent">%</span></div>
+        <div class="col-md-5" id="side"><img src="{% static 'saving_app/plus.png'%}" id="plus"></div>
       </div>
 
-      <div class="row" id="row2">
-        <button class="primary_large" id="manual" data-toggle="modal" data-target="#myModal">Go with this choice</button>
+      <div class="row" id="row1" style="padding:0px; margin:0px 50px">
+        <p id ="explain">Based on your goals and this savings amount,
+        <span id="ontrack" style="color:#49b34a">you are on track for retirement!</span>
+        <span id="offtrack" style="color:#c02f2f" hidden>you might be short.</span></p>
       </div>
 
-      <div class="row" id="row1" style="padding-bottom:40px">
-        <a class="h3" id="back" style="cursor: pointer;">More Savings Options <i class="fa fa-angle-right" style="font-weight: 700"></i></a>
+      <div class="row" id="row2" style="padding-top:40px; margin:0px 50px">
+        <button class="primary button_med" id="manual" data-toggle="modal" data-target="#myModal" data-backdrop="static" >Go with this choice</button>
+        <p id="details" style="padding-top:20px; font-size:14px; font-weight:300">And don't worry, you'll have a chance to review this choice before submission.</p>
       </div>
 
     </div> <!-- /container -->
@@ -82,11 +97,11 @@
  <div class="footer">
    <div class="container">
      <div class="col-md-10" style="padding-left:0px">
-        <p class="text"><a href="#" class="link">Terms of use</a>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<a href="#" class="link">Security</a> </p>
-        <p class="text">This test site was designed by researchers at Carnegie Mellon University and City University of London.</p>
+        <p class="text"><span class="link dummy">Terms of use</span>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<span class="link dummy">Security</span> </p>
+        <p class="text">This test site was designed by researchers at Carnegie Mellon University and City University London.</p>
       </div>
       <div class="col-md-2">
-        <p class="logo">Zoya</p>
+        <p class="logo"><img src="{% static 'saving_app/logo.png'%}" height=30></p>
       </div>
     </div>
   </div>
@@ -104,6 +119,21 @@
       </div>
     </div>
   </div>
+</body>
+
+    <script>
+      $.notify.addStyle('notify', {
+        html: "<div style='border-radius: 10px;'><span data-notify-text/></div>",
+        classes: {
+          base: {
+            "white-space": "nowrap",
+            "background-color": "#f47f00",
+            "padding": "5px"
+          }
+        }
+      })
+
+    </script>
 
     <script>
     $(document).ready(function(){
@@ -113,41 +143,49 @@
       $("#minus").click(function() {
         if (parseInt($("#figure").html()) > 0)
           $("#figure").html(parseInt($("#figure").html()) - 1)
+        if (parseInt($("#figure").html()) >= 6){
+          $("#ontrack").show()
+          $("#offtrack").hide()
+        } else {
+          $("#ontrack").hide()
+          $("#offtrack").show()
+        }
       })
       $("#plus").click(function() {
         if (parseInt($("#figure").html()) < 75)
           $("#figure").html(parseInt($("#figure").html()) + 1)
+        if (parseInt($("#figure").html()) >= 6){
+          $("#ontrack").show()
+          $("#offtrack").hide()
+        } else {
+          $("#ontrack").hide()
+          $("#offtrack").show()
+          }
       })
+      // Setting up notification of dumb button
+      $(".navbar-right-text").click(function(){
+        $(this).notify("Sorry, this link is non-functional.",
+                        { position:"bottom center",
+                          autoHideDelay: 5000,
+                          className: "notify" })
+        }
+      )
 
 
       user_id = "{{ user_id }}"
       name = "{{ name }}"
-      clicks = "{{ clicks }}"
+      clicks = "y"
 
-      $("#manual").click(function(){
-        clicks += "m"
-      })
-      $("#back").click(function(){
-        clicks += "b"
+      $("#manual_submit").one("click", function(){
         var endTime = new Date()
         var timeDiff = (endTime - startTime) / 1000
-        $.get("/update", {user_id: user_id, name: name, set_time: timeDiff}, function(data){
-          window.location.href = "{% url 'choice'%}"+"?user_id="+user_id+"&name="+name+"&clicks="+clicks
-        })
-
-      })
-      $("#manual_submit").click(function(){
-        var endTime = new Date();
-        var timeDiff = (endTime - startTime) / 1000;
-        $.get("/update", {user_id: user_id, name: name, set_time: timeDiff, clicks: clicks,
-                          final_choice: "m", rate: $("#figure").html()}, function(data){
-          // SUBMIT TO QUALDRICS
+        $.get("/update", {user_id: user_id, name: name, set2_time: timeDiff, clicks: clicks}, function(data){
+          window.location.href = "{% url 'set3'%}"+"?user_id="+user_id+"&name="+name+"&contri="+$("#figure").html()
         })
       })
 
     })
     </script>
-  </body>
 
 
 </html>

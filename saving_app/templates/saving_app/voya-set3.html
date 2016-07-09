@@ -1,0 +1,207 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Demo Site</title>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'saving_app/voya-stylesheet.css'%}">
+
+    <!-- Hotjar Tracking Code for https://dry-hamlet-57387.herokuapp.com/ -->
+  <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:240473,hjsv:5};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+      <!-- Fixed navbar -->
+     <nav class="navbar navbar-default navbar-fixed-top">
+
+       <div class="container">
+         <ul class="nav navbar-nav navbar-left">
+           <li id="navbar-text"><img src="{% static 'saving_app/logo.png'%}" height=30></li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+           <li class="navbar-right-text dummy">Need Help?</li>
+           <li class="navbar-right-text dummy">Steps to Save</li>
+           <li class="navbar-right-text dummy">About My Plan</li>
+           <li class="navbar-right-text dummy">Important Information</li>
+         </ul>
+       </div>
+     </nav>
+
+    <div class="container" id="main" style="min-height:100%">
+
+    <div class="row" style="margin:0px 50px">
+        <div class="col-md-4 toggle inactive">About Me</div>
+        <div class="col-md-4 toggle inactive">Enrollment Choices</div>
+        <div class="col-md-4 toggle active">Review & Confirm<div class="upside-down-triangle"></div></div>
+    </div>
+
+    <div class="row" id="row1" style="padding-bottom:0px; margin:0px 50px">
+      <p id="h1">Before you head out, confirm your enrollment choices.</p>
+    </div>
+
+
+    <div class="row" id="box">
+      <p id="t1">I will save the following from my pay:</p>
+      <p id="t2">Employee Pre-Tax</p>
+      <p id="t3">Contributing <span class="value_inline" id="contri"></span><span id="percent_inline">%</span> per paycheck</p>
+
+      <div id="feedback">
+        <p id="t2" style="margin-left: 0px; color:#fff">Great Job!</p>
+        <p id="t3" style="margin-left: 0px; color:#fff">You're taking full advantage of your employer match.</p>
+      </div>
+
+    </div>
+
+    <div class="row" id="box">
+      <p id="t1">I will invest it in:</p>
+      <p id="t3"><span class="value_inline">100</span><span id="percent_inline">%</span><span style="font-size:20px; font-weight:200; color: #d85722">&nbsp;Target Date Fund</span></p>
+      <p id="t3">A single fund that's professionally managed and aligns with my retirement year.</p>
+    </div>
+
+    <div class="row" style="margin-left:60px">
+    <p id="t3" style="margin-left:0px">I acknowledge that:</p>
+    <div class="checkbox checkbox-primary">
+      <label style="padding-left:40px"><input style="left:20px" type="checkbox" id="affirm" value=""><p id="explain" style="text-align:left">I understand that by selecting the Enroll Now button, I acknowledge the above statements.</p></label>
+    </div>
+
+    </div>
+
+    <div class="row" style="margin:50px; text-align:center; position:relative">
+        <span id="back"><i class="fa fa-angle-left" aria-hidden="true" style="font-size:18px; font-weight:800"></i>&nbsp;&nbsp;&nbsp;Back</span>
+        <button class="primary button_med" id="manual">Enroll now</button>
+
+    </div>
+
+  </div> <!-- /container -->
+
+ <div class="footer">
+   <div class="container">
+     <div class="col-md-10" style="padding-left:0px">
+        <p class="text"><span class="link dummy">Terms of use</span>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<span class="link dummy">Security</span> </p>
+        <p class="text">This test site was designed by researchers at Carnegie Mellon University and City University London.</p>
+      </div>
+      <div class="col-md-2">
+        <p class="logo"><img src="{% static 'saving_app/logo.png'%}" height=30></p>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <p id="h1" style="color:#f47f00; font-size:32px; line-spacing:1.2; padding: 30px 80px">Way to go, <span class="name"></span>!</p>
+        <p id="h1" style="padding-bottom: 60px; font-size: 24px">You've taken the first step towards a secure future.</p>
+        <button class="primary button_med" id="manual_submit" style="margin-left:10px">Return</button>
+        <p id="details" style="padding:20px 0px">Click Return to go back to the survey.</p>
+      </div>
+    </div>
+  </div>
+    <script>
+      $.notify.addStyle('notify', {
+        html: "<div style='border-radius: 10px;'><span data-notify-text/></div>",
+        classes: {
+          base: {
+            "white-space": "nowrap",
+            "background-color": "#f47f00",
+            "padding": "5px"
+          }
+        }
+      })
+
+    </script>
+
+    <script>
+    $(document).ready(function(){
+      var startTime = new Date();
+
+      // Setting up notification of dumb button
+      $(".dummy").click(function(){
+        $(this).notify("Sorry, this link is non-functional.",
+                        { position:"bottom center",
+                          autoHideDelay: 5000,
+                          style: "notify" })
+        }
+      )
+
+
+      user_id = "{{ user_id }}"
+      name = "{{ name }}"
+      clicks = "z"
+
+      $(".name").html(name)
+      $("#contri").html("{{ contri }}")
+
+      $("#manual").click(function() {
+        if ($("#affirm").prop("checked")) {
+          $('#myModal').modal({
+            backdrop: 'static',
+            keyboard: false
+          });
+        } else {
+          $("#affirm").notify("Check this box before proceed",
+                          { position:"top right",
+                            autoHideDelay: 3000,
+                            style: "notify" })
+        }
+      })
+
+      $("#back").click(function(){
+        var endTime = new Date()
+        var timeDiff = (endTime - startTime) / 1000
+        $.get("/update", {user_id: user_id, name: name, set_time: timeDiff, clicks: clicks}, function(data){
+          window.location.href = "{% url 'set2'%}"+"?user_id="+user_id+"&name="+name
+        })
+      })
+
+      $("#manual_submit").one("click", function(){
+        var endTime = new Date();
+        var timeDiff = (endTime - startTime) / 1000;
+        $.get("/update", {user_id: user_id, name: name, set3_time: timeDiff, clicks: clicks,
+                          final_choice: "m", rate: $("#figure").html()}, function(data){
+          // SUBMIT TO QUALDRICS
+        })
+      })
+
+    })
+    </script>
+  </body>
+
+
+</html>

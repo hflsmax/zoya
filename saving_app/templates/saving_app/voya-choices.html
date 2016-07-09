@@ -16,6 +16,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" >
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{% static 'saving_app/voya-stylesheet.css'%}">
 
@@ -48,13 +51,13 @@
 
       <div class="container">
         <ul class="nav navbar-nav navbar-left">
-          <li id="navbar-text">ZOYA</li>
+          <li id="navbar-text"><img src="{% static 'saving_app/logo.png'%}" height=30></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li id="navbar-right-text">Need Help?</li>
-          <li id="navbar-right-text">Steps to Save</li>
-          <li id="navbar-right-text">About My Plan</li>
-          <li id="navbar-right-text">Important Information</li>
+          <li class="navbar-right-text">Need Help?</li>
+          <li class="navbar-right-text">Steps to Save</li>
+          <li class="navbar-right-text">About My Plan</li>
+          <li class="navbar-right-text">Important Information</li>
         </ul>
       </div>
     </nav>
@@ -62,7 +65,7 @@
     <div class="container" id="main">
 
       <div class="row" id="row1">
-        <p id ="h1">Hi <span id="name"></span>, your employer has chosen to automatically enroll you in your plan:</p>
+        <p id ="h1">Hi <span class="name"></span>, your employer has chosen to automatically enroll you in your plan:</p>
         <p id = "h2">EMPLOYEE RETIREMENT SAVINGS PLAN 401(K)</p>
       </div>
       <div class="row" id="row2">
@@ -88,7 +91,7 @@
       			<p class="h3">Let my scheduled automatic enrollment go through.</p>
       			</div>
       			<div class="row">
-      			<button class="primary" id="auto" data-toggle="modal" data-target="#myModal2">Select</button>
+      			<button class="primary" id="auto" data-toggle="modal" data-target="#myModal2" data-backdrop="static" >Select</button>
       			</div>
       		</div>
       	</div>
@@ -97,7 +100,7 @@
       			<div class="row" style="min-height: 125px">
       			<p class="h3">I do not wish to enroll.</p>
       			</div>
-      			<div class="row" data-toggle="modal" data-target="#myModal">
+      			<div class="row" data-toggle="modal" data-target="#myModal" data-backdrop="static">
       			<button class="primary" id="no">Select</button>
       			</div>
       		</div>
@@ -110,11 +113,11 @@
   <div class="footer">
     <div class="container">
       <div class="col-md-10" style="padding-left:0px">
-         <p class="text"><a class="link">Terms of use</a>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<a class="link">Security</a> </p>
-         <p class="text">TThis test site was designed by researchers at Carnegie Mellon University and City University of London.</p>
+         <p class="text"><span class="link dummy">Terms of use</span>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<span class="link dummy">Security</span> </p>
+         <p class="text">This test site was designed by researchers at Carnegie Mellon University and City University London.</p>
        </div>
        <div class="col-md-2">
-         <p class="logo">ZOYA</p>
+         <p class="logo"><img src="{% static 'saving_app/logo.png'%}" height=30></p>
        </div>
      </div>
    </div>
@@ -123,11 +126,11 @@
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
-        <p id="h1" style="color:#f47f00; font-size:32px; line-spacing:1.2; padding: 30px 80px"><span id="name"></span>, are you sure you don't want to save for retirement?</p>
+        <p id="h1" style="color:#f47f00; font-size:32px; font-weight:300; line-spacing:1.2; padding: 30px 80px"><span class="name"></span>, are you sure you don't want to save for retirement?</p>
         <p id="h1" style="padding-bottom: 60px; font-size: 24px">You're passing up on the opportunity to save for your future.</p>
-        <button class="secondary" style="margin-right:10px" onclick="$('#myModal').modal('toggle');">Cancel</button>
-        <button class="primary" id="no_submit" style="margin-left:10px">Submit</button>
-        <p id="details" style="padding:20px 0px">Click Submit to submit your choice and return to the survey.</p>
+        <button class="secondary button_med" style="margin-right:10px" onclick="$('#myModal').modal('toggle');">Cancel</button>
+        <button class="primary button_med" id="no_submit" style="margin-left:10px">Decline Enrollment</button>
+        <p id="details" style="padding:20px 0px">Click Submit to Decline your choice and return to the survey.</p>
       </div>
     </div>
   </div>
@@ -135,11 +138,10 @@
   <div id="myModal2" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
-        <p id="h1" style="color:#f47f00; font-size:32px; line-spacing:1.2; padding: 30px 80px">Congratulations!</p>
-        <p id="h1" style="padding-bottom: 60px; font-size: 24px">You have taken the first step towards a secure future.</p>
-        <button class="secondary" style="margin-right:10px" onclick="$('#myModal2').modal('toggle');">Cancel</button>
-        <button class="primary" id="auto_submit" style="margin-left:10px">Submit</button>
-        <p id="details" style="padding:20px 0px">Click Submit to submit your choice and return to the survey.</p>
+        <p id="h1" style="color:#f47f00; font-size:32px; font-weight:300; line-spacing:1.2; padding: 30px 80px">Way to go!</p>
+        <p id="h1" style="padding-bottom: 60px; font-size: 24px">Your scheduled enrollment will go through.</p>
+        <button class="primary button_med" id="auto_submit" style="margin-left:10px">Close</button>
+        <p id="details" style="padding:20px 0px">Click Close to submit your choice and return to the survey.</p>
       </div>
     </div>
   </div>
@@ -148,21 +150,49 @@
   </body>
 
   <script>
+    $.notify.addStyle('notify', {
+      html: "<div style='border-radius: 10px;'><span data-notify-text/></div>",
+      classes: {
+        base: {
+          "white-space": "nowrap",
+          "background-color": "#f47f00",
+          "padding": "5px"
+        }
+      }
+    })
+
+  </script>
+  <script>
   // Other: o, auto: a, no: n
     $(document).ready(function(){
       var startTime = new Date();
 
+      // Setting up notification of dumb button
+      $(".navbar-right-text").click(function(){
+        $(this).notify("Sorry, this link is non-functional.",
+                        { position:"bottom center",
+                          autoHideDelay: 5000,
+                          className: "notify" })
+        }
+      )
+
+      // Setting up alert when existing
+      $(window).on('beforeunload', function(){
+        return 'You are not finished with the survey. If you close the tab, your response will be invalidated and you will not receive a payment code.';
+      });
+
       user_id = "{{ user_id }}"
       name = "{{ name }}"
-      clicks = "{{ clicks }}"
+      clicks = ""
 
-      $("#name").html(name)
-      $("#others").click(function(){
+      $(".name").html(name)
+      $("#others").one("click", function(){
         clicks += "o"
         var endTime = new Date();
         var timeDiff = (endTime - startTime) / 1000;
-        $.get("/update", {user_id: user_id, name: name, choice_time: timeDiff}, function(data){
-          window.location.href = "{% url 'set'%}"+"?user_id="+user_id+"&name="+name+"&clicks="+clicks
+        $.get("/update", {user_id: user_id, name: name, choice_time: timeDiff, clicks: clicks}, function(data){
+          $(window).off('beforeunload')
+          window.location.href = "{% url 'set1'%}"+"?user_id="+user_id+"&name="+name
         })
       })
       $("#auto").click(function(){
@@ -171,7 +201,7 @@
       $("#no").click(function(){
         clicks += "n"
       })
-      $("#no_submit").click(function(){
+      $("#no_submit").one("click", function(){
         var endTime = new Date();
         var timeDiff = (endTime - startTime) / 1000;
         $.get("/update", {user_id: user_id, name: name, choice_time: timeDiff, clicks: clicks,
@@ -179,7 +209,7 @@
           // SUBMIT TO QUALDRICS
         })
       })
-      $("#auto_submit").click(function(){
+      $("#auto_submit").one("click", function(){
         var endTime = new Date();
         var timeDiff = (endTime - startTime) / 1000;
         $.get("/update", {user_id: user_id, name: name, choice_time: timeDiff, clicks: clicks,
