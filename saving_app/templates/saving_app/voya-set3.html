@@ -149,6 +149,10 @@
 
     <script>
     $(document).ready(function(){
+      $(window).on('beforeunload', function(){
+        return ""
+      });
+
       var startTime = new Date();
 
       // Setting up notification of dumb button
