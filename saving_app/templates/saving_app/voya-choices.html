@@ -54,10 +54,10 @@
           <li id="navbar-text"><img src="{% static 'saving_app/logo.png'%}" height=30></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="navbar-right-text">Need Help?</li>
-          <li class="navbar-right-text">Steps to Save</li>
-          <li class="navbar-right-text">About My Plan</li>
-          <li class="navbar-right-text">Important Information</li>
+          <li class="navbar-right-text dummy">Need Help?</li>
+          <li class="navbar-right-text dummy">Steps to Save</li>
+          <li class="navbar-right-text dummy">About My Plan</li>
+          <li class="navbar-right-text dummy">Important Information</li>
         </ul>
       </div>
     </nav>
@@ -168,7 +168,7 @@
       var startTime = new Date();
 
       // Setting up notification of dumb button
-      $(".navbar-right-text").click(function(){
+      $(".dummy").click(function(){
         $(this).notify("Sorry, this link is non-functional.",
                         { position:"bottom center",
                           autoHideDelay: 5000,
