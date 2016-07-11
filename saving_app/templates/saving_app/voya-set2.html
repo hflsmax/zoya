@@ -77,7 +77,7 @@
 
       <div class="row" id="row1" style="padding:30px; margin:0px 50px">
         <div class="col-md-5" id="side"><img src="{% static 'saving_app/minus.png'%}" id="minus"></div>
-        <div class="col-md-2" id="value"><span id="figure" style="color:#d3d3d3">6</span><span id="percent" style="color:#d3d3d3">%</span></div>
+        <div class="col-md-2" id="value"><span id="figure">6</span><span id="percent">%</span></div>
         <div class="col-md-5" id="side"><img src="{% static 'saving_app/plus.png'%}" id="plus"></div>
       </div>
 
@@ -132,6 +132,7 @@
 
       var startTime = new Date();
 
+
       $("#minus").click(function() {
         if (parseInt($("#figure").html()) > 0)
           $("#figure").html(parseInt($("#figure").html()) - 1)
@@ -170,7 +171,16 @@
 
       user_id = "{{ user_id }}"
       name = "{{ name }}"
+      contri = parseInt({{ contri }})
       clicks = "y"
+      if (contri == -1) {
+        contri = 6
+        $("#figure, #percent").css("color", '#d3d3d3')
+      } else {
+        $("#figure, #percent").css("color", '#0097A9')
+      }
+      $("#figure").html(contri)
+
 
       $("#manual_submit").one("click", function(){
         var endTime = new Date()

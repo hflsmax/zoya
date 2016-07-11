@@ -201,7 +201,7 @@
         var timeDiff = (endTime - startTime) / 1000
         $.get("/update", {user_id: user_id, name: name, set_time: timeDiff, clicks: clicks}, function(data){
           $(window).off('beforeunload')
-          window.location.href = "{% url 'set2'%}"+"?user_id="+user_id+"&name="+name
+          window.location.href = "{% url 'set2'%}"+"?user_id="+user_id+"&name="+name+"&contri="+contri
         })
       })
 

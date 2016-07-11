@@ -23,8 +23,11 @@ def set1(request):
 def set2(request):
     user_id = request.GET.get("user_id")
     name = request.GET.get("name")
+    contri = request.GET.get("contri")
+    if (contri == None):
+        contri = -1
     return render(request, 'saving_app/voya-set2.html',
-                    {"user_id": user_id, "name": name})
+                    {"user_id": user_id, "name": name, "contri": contri})
 
 def set3(request):
     user_id = request.GET.get("user_id")
