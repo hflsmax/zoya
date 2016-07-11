@@ -290,7 +290,7 @@ html {
 	margin-bottom:20px;
 }
 
-#t2 {
+.t2 {
 	margin-left:20px;
 	color: #888888;
 	font-size: 20px;
@@ -298,7 +298,7 @@ html {
 	margin-bottom:0px;
 }
 
-#t3 {
+.t3 {
 	margin-left:20px;
 	color: #666666;
 	font-size: 16px;

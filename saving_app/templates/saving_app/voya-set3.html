@@ -77,24 +77,24 @@
 
     <div class="row" id="box">
       <p id="t1">I will save the following from my pay:</p>
-      <p id="t2">Employee Pre-Tax</p>
-      <p id="t3">Contributing <span class="value_inline" id="contri"></span><span id="percent_inline">%</span> per paycheck</p>
+      <p class="t2">Employee Pre-Tax</p>
+      <p class="t3">Contributing <span class="value_inline" id="contri"></span><span id="percent_inline">%</span> per paycheck</p>
 
       <div id="feedback">
-        <p id="t2" style="margin-left: 0px; color:#fff">Great Job!</p>
-        <p id="t3" style="margin-left: 0px; color:#fff">You're taking full advantage of your employer match.</p>
+        <p class="t2" style="margin-left: 0px; color:#fff" id="comment1">Great Job!</p>
+        <p class="t3" id="comment2" style="margin-left: 0px; color:#fff">You're taking full advantage of your employer match.</p>
       </div>
 
     </div>
 
     <div class="row" id="box">
       <p id="t1">I will invest it in:</p>
-      <p id="t3"><span class="value_inline">100</span><span id="percent_inline">%</span><span style="font-size:20px; font-weight:200; color: #d85722">&nbsp;Target Date Solution Fund</span></p>
-      <p id="t3">A single fund that's professionally managed and aligns with my retirement year.</p>
+      <p class="t3"><span class="value_inline">100</span><span id="percent_inline">%</span><span style="font-size:20px; font-weight:200; color: #d85722">&nbsp;Target Date Solution Fund</span></p>
+      <p class="t3">A single fund that's professionally managed and aligns with my retirement year.</p>
     </div>
 
     <div class="row" style="margin-left:60px">
-    <p id="t3" style="margin-left:0px">I acknowledge that:</p>
+    <p class="t3" style="margin-left:0px">I acknowledge that:</p>
     <div class="checkbox checkbox-primary">
       <label style="padding-left:40px"><input style="left:20px" type="checkbox" id="affirm" value=""><p id="explain" style="text-align:left">I understand that by selecting the Enroll Now button, I acknowledge the above statements.</p></label>
     </div>
@@ -167,10 +167,20 @@
 
       user_id = "{{ user_id }}"
       name = "{{ name }}"
+      contri = parseInt({{ contri }})
       clicks = "z"
 
       $(".name").html(name)
-      $("#contri").html("{{ contri }}")
+      $("#contri").html(contri)
+      if (contri >= 6) {
+        $("#comment1").html("Great Job!")
+        $("#comment2").html("You're taking full advantage of your employer match.")
+      }
+      else {
+        $("#comment1").html("")
+        $("#comment2").html("You're not taking full advantage of your employer match.")
+      }
+
 
       $("#manual").click(function() {
         if ($("#affirm").prop("checked")) {
@@ -179,7 +189,7 @@
             keyboard: false
           });
         } else {
-          $("#affirm").notify("Check this box before proceed",
+          $("#affirm").notify("Check this box to proceed",
                           { position:"top right",
                             autoHideDelay: 3000,
                             style: "notify" })
