@@ -208,6 +208,14 @@ html {
 	margin:auto;
 }
 
+.category {
+	color: #888;
+	font-size:16px;
+	font-weight:300;
+	max-width: 750px;
+	margin:auto;
+}
+
 #details {
 	color: #666666;
 	font-size: 13px;
@@ -399,12 +407,26 @@ html {
 	padding: 0px 20px;
 }
 
-.value_inline {
+.value_1 {
+	font-size: 56px;
+	font-weight: 200;
+	color: #0097A9;
+}
+
+.correct {
+	color: #49b34a;
+}
+
+.incorrect {
+	color: #c02f2f;
+}
+
+
+#value_inline {
 	font-size: 28px;
 	font-weight:300;
 	color: #0097A9;
 }
-
 #percent {
 	font-size: 40px;
 	vertical-align:text-top;
@@ -518,19 +540,4 @@ html {
 #myModal .modal-dialog
 {
     width: 800px;
-}
-
-@keyframes fade {
-  25% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 1;
-  }
 }

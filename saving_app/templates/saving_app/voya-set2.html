@@ -81,10 +81,26 @@
         <div class="col-md-5" id="side"><img src="{% static 'saving_app/plus.png'%}" id="plus"></div>
       </div>
 
-      <div class="row" id="row1" style="padding:0px; margin:0px 50px">
-        <p id ="explain">Based on your goals and this savings amount,
-        <span id="ontrack" style="color:#49b34a">you are on track for retirement!</span>
-        <span id="offtrack" style="color:#c02f2f" hidden>you might be short.</span></p>
+      <!-- THIS IS THE NEW ADDITION -->
+      <div class="row" style="margin:0px 200px">
+          <div id="explain" style="margin-bottom:20px">Based on your goals and this contribution amount:</div>
+          <div class="col-md-4" style="border-right: 1px solid #ddd; padding-left:30px">
+            <p class="category">You may have</p>
+            <p class="value_1"><span id="percent">$</span><span id="target">4,627</span></p>
+          </div>
+
+          <div class="col-md-4" style="border-right: 1px solid #ddd; padding-left:30px">
+            <p class="category">You may need</p>
+            <p class="value_1" style="color: #888"><span id="percent">$</span><span id="need">4,927</span></p>
+          </div>
+
+
+          <div class="col-md-4" style="padding-left:30px">
+            <p class="category">You might be short</p>
+            <!-- Use class "correct" if target >=need ; use class "incorrect" if target < need -->
+            <p class="value_1 incorrect"><span id="percent">$</span><span id="gap">300</span></p>
+
+          </div>
       </div>
 
       <div class="row" id="row2" style="padding-top:40px; margin:0px 50px">
@@ -132,7 +148,12 @@
 
       var startTime = new Date();
 
-
+      update_numbers = function() {
+        rate = $("#figure").html()
+        $("#target").html(lookup[rate]['target'])
+        $("#need").html(lookup[rate]['need'])
+        $("#gap").html(lookup[rate]['gap'])
+      }
       $("#minus").click(function() {
         if (parseInt($("#figure").html()) > 0)
           $("#figure").html(parseInt($("#figure").html()) - 1)
@@ -145,6 +166,7 @@
         }
         $("#figure").css('color', '#0097A9')
         $("#percent").css('color', '#0097A9')
+        update_numbers()
       })
       $("#plus").click(function() {
         if (parseInt($("#figure").html()) < 75)
@@ -158,6 +180,7 @@
           }
         $("#figure").css('color', '#0097A9')
         $("#percent").css('color', '#0097A9')
+        update_numbers()
       })
       // Setting up notification of dumb button
       $(".dummy").click(function(){
@@ -167,6 +190,13 @@
                           className: "notify" })
         }
       )
+      // Retrieving lookup table
+      lookup = null
+      $.get("/lookup", {age: {{ age }}, salary: {{ salary }}, savings: {{ savings }}}, function(data) {
+        console.log(data)
+        lookup = data
+        update_numbers()
+      })
 
 
       user_id = "{{ user_id }}"

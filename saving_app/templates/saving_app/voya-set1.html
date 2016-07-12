@@ -85,7 +85,7 @@
 	     	<form>
 			  <div class="form-group">
 			    <label for="age" id="fieldname">How old are you now?</label>
-			    <input type="number" class="form-control" id="dateofbirth">
+			    <input type="number" class="form-control" id="age">
 			  </div>
 			  <div class="form-group">
 			    <label for="retAge" id="fieldname">By what age do you want to retire?</label>
@@ -174,12 +174,53 @@
       )
 
       $("#name").html(name)
-      $("#others").one("click", function(){
+      $("#others").bind("click", function(){
+        scroll_to = function(j) {
+          $('html, body').animate({
+              scrollTop: j.offset().top - 120
+          }, 1000);
+        }
+        if (!$.isNumeric($("#age").val())) {
+          scroll_to(
+            $("#age").notify("Please enter a valid number",
+                          { position:"right",
+                            autoHideDelay: 5000,
+                            className: "notify" })
+                          )
+          return
+        }
+        if (!$.isNumeric($("#retAge").val())) {
+          scroll_to(
+            $("#retAge").notify("Please enter a valid number",
+                          { position:"right",
+                            autoHideDelay: 5000,
+                            className: "notify" })
+                          )
+          return
+        }
+        if (!$.isNumeric($("#salary").val())) {
+          scroll_to(
+            $("#salary").notify("Please enter a valid number",
+                          { position:"right",
+                            autoHideDelay: 5000,
+                            className: "notify" })
+                          )
+          return
+        }
+        if (!$.isNumeric($("#savings").val())) {
+          scroll_to(
+            $("#savings").notify("Please enter a valid number",
+                          { position:"right",
+                            autoHideDelay: 5000,
+                            className: "notify" })
+                          )
+          return
+        }
         var endTime = new Date();
         var timeDiff = (endTime - startTime) / 1000;
         $.get("/update", {user_id: user_id, name: name, set1_time: timeDiff, clicks: clicks}, function(data){
           $(window).off('beforeunload')
-          window.location.href = "{% url 'set2'%}"+"?user_id="+user_id+"&name="+name
+          window.location.href = "{% url 'set2'%}"+"?user_id="+user_id+"&name="+name+"&age="+$("#age").val()+"&salary="+$("#salary").val()+"&savings="+$("#savings").val()
         })
       })
     })
