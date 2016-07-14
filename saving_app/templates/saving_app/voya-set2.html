@@ -2,7 +2,8 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
@@ -26,16 +27,22 @@
     <link rel="stylesheet" type="text/css" href="{% static 'saving_app/voya-stylesheet.css'%}">
 
     <!-- Hotjar Tracking Code for https://dry-hamlet-57387.herokuapp.com/ -->
-  <script>
-      (function(h,o,t,j,a,r){
-          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-          h._hjSettings={hjid:240473,hjsv:5};
-          a=o.getElementsByTagName('head')[0];
-          r=o.createElement('script');r.async=1;
-          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-          a.appendChild(r);
-      })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 240473,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,186 +50,233 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
+</head>
 
-      <!-- Fixed navbar -->
-     <nav class="navbar navbar-default navbar-fixed-top">
-
-       <div class="container">
-         <ul class="nav navbar-nav navbar-left">
-           <li id="navbar-text"><img src="{% static 'saving_app/logo.png'%}" height=30></li>
-         </ul>
-         <ul class="nav navbar-nav navbar-right">
-           <li class="navbar-right-text dummy">Need Help?</li>
-           <li class="navbar-right-text dummy">Steps to Save</li>
-           <li class="navbar-right-text dummy">About My Plan</li>
-           <li class="navbar-right-text dummy">Important Information</li>
-         </ul>
-       </div>
-     </nav>
-
-    <div class="container" id="main" style="min-height:100%">
-
-     <div class="row" style="margin:0px 50px">
-        <div class="col-md-4 toggle inactive">About Me</div>
-        <div class="col-md-4 toggle active">Enrollment Choices<div class="upside-down-triangle"></div></div>
-        <div class="col-md-4 toggle inactive">Review & Confirm</div>
-       </div>
-
-      <div class="row" id="row1" style="padding-bottom:0px; margin:0px 50px">
-        <p id="h1">Here’s what your monthly income in retirement could look like:</p>
-        <p id ="explain">Select your savings contribution rate:</p>
-      </div>
-
-      <div class="row" id="row1" style="padding:30px; margin:0px 50px">
-        <div class="col-md-5" id="side"><img src="{% static 'saving_app/minus.png'%}" id="minus"></div>
-        <div class="col-md-2" id="value"><span id="figure">6</span><span id="percent">%</span></div>
-        <div class="col-md-5" id="side"><img src="{% static 'saving_app/plus.png'%}" id="plus"></div>
-      </div>
-
-      <!-- THIS IS THE NEW ADDITION -->
-      <div class="row" style="margin:0px 200px">
-          <div id="explain" style="margin-bottom:20px">Based on your goals and this contribution amount:</div>
-          <div class="col-md-4" style="border-right: 1px solid #ddd; padding-left:30px">
-            <p class="category">You may have</p>
-            <p class="value_1"><span id="percent">$</span><span id="target">4,627</span></p>
-          </div>
-
-          <div class="col-md-4" style="border-right: 1px solid #ddd; padding-left:30px">
-            <p class="category">You may need</p>
-            <p class="value_1" style="color: #888"><span id="percent">$</span><span id="need">4,927</span></p>
-          </div>
+<body>
+    <div class="wrapper">
 
 
-          <div class="col-md-4" style="padding-left:30px">
-            <p class="category">You might be short</p>
-            <!-- Use class "correct" if target >=need ; use class "incorrect" if target < need -->
-            <p class="value_1 incorrect"><span id="percent">$</span><span id="gap">300</span></p>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
 
-          </div>
-      </div>
+            <div class="container">
+                <ul class="nav navbar-nav navbar-left">
+                    <li id="navbar-text"><img src="{% static 'saving_app/logo.png'%}" height=30></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-right-text dummy">Need Help?</li>
+                    <li class="navbar-right-text dummy">Steps to Save</li>
+                    <li class="navbar-right-text dummy">About My Plan</li>
+                    <li class="navbar-right-text dummy">Important Information</li>
+                </ul>
+            </div>
+        </nav>
 
-      <div class="row" id="row2" style="padding-top:40px; margin:0px 50px">
-        <button class="primary button_med" id="manual_submit" >Go with this choice</button>
-        <p id="details" style="padding-top:20px; font-size:14px; font-weight:300">And don't worry, you'll have a chance to review this choice before submission.</p>
-      </div>
+        <div class="container" id="main" style="min-height:100%">
 
-    </div> <!-- /container -->
+            <div class="row" style="margin:0px 50px">
+                <div class="col-md-4 toggle inactive">About Me</div>
+                <div class="col-md-4 toggle active">Enrollment Choices
+                    <div class="upside-down-triangle"></div>
+                </div>
+                <div class="col-md-4 toggle inactive">Review & Confirm</div>
+            </div>
 
- <div class="footer">
-   <div class="container">
-     <div class="col-md-10" style="padding-left:0px">
-        <p class="text"><span class="link dummy">Terms of use</span>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<span class="link dummy">Security</span> </p>
-        <p class="text">This test site was designed by researchers at Carnegie Mellon University and City University London.</p>
-      </div>
-      <div class="col-md-2">
-        <p class="logo"><img src="{% static 'saving_app/logo.png'%}" height=30></p>
-      </div>
+            <div class="row" id="row1" style="padding-bottom:0px; margin:0px 50px">
+                <p id="h1">Please select your savings rate:</p>
+            </div>
+
+            <div class="row" id="row1" style="padding:30px; margin:0px 50px">
+                <div class="col-md-5" id="side"><img src="{% static 'saving_app/minus.png'%}" id="minus"></div>
+                <div class="col-md-2" id="value"><span class="figure">6</span><span class="percent">%</span></div>
+                <div class="col-md-5" id="side"><img src="{% static 'saving_app/plus.png'%}" id="plus"></div>
+            </div>
+
+            <div id="row">
+                <p id="h1">Here's what each month of your retirement could look like.</p>
+                <div style="text-align:center; font-size:20px; font-weight:300; color:#888; margin: 0px 60px 40px 60px">This estimate is based on your retirement goals and the savings rate you selected.</div>
+            </div>
+
+            <div class="row" style="margin:0px 150px">
+                <div class="col-md-4" style="border-right: 1px solid #ddd">
+                    <p class="category">You could have</p>
+                    <p class="value_1"><span id="class=" percent "">$</span><span id="target">4,627</span></p>
+                </div>
+
+                <div class="col-md-4" style="border-right: 1px solid #ddd; padding-left:30px">
+                    <p class="category">You will need</p>
+                    <p class="value_1" style="color: #888"><span class="percent">$</span><span id="need">4,927</span></p>
+                </div>
+
+
+                <div class="col-md-4" style="padding-left:30px">
+
+                    <!-- Use the following if target > need -->
+                    <!-- <div class="row" style="padding-top:20px">
+    	          	<div class="col-md-3" style="padding:0px; text-align:right">
+    	          		<i class="fa fa-check-circle" aria-hidden="true" style="font-size:48px; font-weight: 800; color: #d85722"></i>
+    	          	</div>
+    	          	<div class="col-md-9" style="vertical-align:middle; padding:0px; margin-top:10px">
+    	          		<span class="category" style="color: #d85722; font-size: 20px; font-weight: 300">&nbsp;&nbsp;&nbsp;You're on Track</span>
+    	           	</div>
+               </div>
+     -->
+                    <!-- Use the following if need > target -->
+                    <p class="category">You might be short</p>
+                    <p class="value_1 incorrect"><span class="percent">$</span><span id="gap">300</span></p>
+
+                </div>
+            </div>
+
+
+
+            <div class="row" style="padding-top:40px; margin:30px; text-align:center">
+                <div id="explain">You can enroll at this rate, or continue to adjust your savings rate above.</div>
+
+            </div>
+            <div class="row" style="text-align:center; position:relative; margin:60px; margin-top:0px">
+                <span id="back"><i class="fa fa-angle-left" aria-hidden="true" style="font-size:18px; font-weight:800"></i>&nbsp;&nbsp;&nbsp;Back</span>
+                <button class="primary button_med" id="manual_submit">Go with this choice</button>
+
+            </div>
+
+        </div>
+        <!-- /container -->
+
+        <div class="footer">
+            <div class="container">
+                <div class="col-md-10" style="padding-left:0px">
+                    <p class="text"><span class="link dummy">Terms of use</span>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<span class="link dummy">Security</span> </p>
+                    <p class="text">This test site was designed by researchers at Carnegie Mellon University and City University London.</p>
+                </div>
+                <div class="col-md-2">
+                    <p class="logo"><img src="{% static 'saving_app/logo.png'%}" height=30></p>
+                </div>
+            </div>
+        </div>
+
     </div>
-  </div>
-
-
 
 </body>
 
-    <script>
-      $.notify.addStyle('notify', {
+<script>
+    $.notify.addStyle('notify', {
         html: "<div style='border-radius: 10px;'><span data-notify-text/></div>",
         classes: {
-          base: {
-            "white-space": "nowrap",
-            "background-color": "#f47f00",
-            "padding": "5px"
-          }
+            base: {
+                "white-space": "nowrap",
+                "background-color": "#f47f00",
+                "padding": "5px"
+            }
         }
-      })
+    })
+</script>
 
-    </script>
+<script>
+    $(document).ready(function() {
+        $(window).on('beforeunload', function() {
+            return ""
+        });
 
-    <script>
-    $(document).ready(function(){
-      $(window).on('beforeunload', function(){
-        return ""
-      });
+        var startTime = new Date();
 
-      var startTime = new Date();
-
-      update_numbers = function() {
-        rate = $("#figure").html()
-        $("#target").html(lookup[rate]['target'])
-        $("#need").html(lookup[rate]['need'])
-        $("#gap").html(lookup[rate]['gap'])
-      }
-      $("#minus").click(function() {
-        if (parseInt($("#figure").html()) > 0)
-          $("#figure").html(parseInt($("#figure").html()) - 1)
-        if (parseInt($("#figure").html()) >= 6){
-          $("#ontrack").show()
-          $("#offtrack").hide()
-        } else {
-          $("#ontrack").hide()
-          $("#offtrack").show()
+        update_numbers = function() {
+            rate = $(".figure").html()
+            $("#target").html(lookup[rate]['target'])
+            $("#need").html(lookup[rate]['need'])
+            $("#gap").html(lookup[rate]['gap'])
         }
-        $("#figure").css('color', '#0097A9')
-        $("#percent").css('color', '#0097A9')
-        update_numbers()
-      })
-      $("#plus").click(function() {
-        if (parseInt($("#figure").html()) < 75)
-          $("#figure").html(parseInt($("#figure").html()) + 1)
-        if (parseInt($("#figure").html()) >= 6){
-          $("#ontrack").show()
-          $("#offtrack").hide()
-        } else {
-          $("#ontrack").hide()
-          $("#offtrack").show()
-          }
-        $("#figure").css('color', '#0097A9')
-        $("#percent").css('color', '#0097A9')
-        update_numbers()
-      })
-      // Setting up notification of dumb button
-      $(".dummy").click(function(){
-        $(this).notify("Sorry, this link is non-functional.",
-                        { position:"bottom center",
-                          autoHideDelay: 5000,
-                          className: "notify" })
-        }
-      )
-      // Retrieving lookup table
-      lookup = null
-      $.get("/lookup", {age: {{ age }}, salary: {{ salary }}, savings: {{ savings }}}, function(data) {
-        console.log(data)
-        lookup = data
-        update_numbers()
-      })
-
-
-      user_id = "{{ user_id }}"
-      name = "{{ name }}"
-      contri = parseInt({{ contri }})
-      clicks = "y"
-      if (contri == -1) {
-        contri = 6
-        $("#figure, #percent").css("color", '#d3d3d3')
-      } else {
-        $("#figure, #percent").css("color", '#0097A9')
-      }
-      $("#figure").html(contri)
-
-
-      $("#manual_submit").one("click", function(){
-        var endTime = new Date()
-        var timeDiff = (endTime - startTime) / 1000
-        $.get("/update", {user_id: user_id, name: name, set2_time: timeDiff, clicks: clicks}, function(data){
-          $(window).off('beforeunload')
-          window.location.href = "{% url 'set3'%}"+"?user_id="+user_id+"&name="+name+"&contri="+$("#figure").html()
+        $("#minus").click(function() {
+            if (parseInt($(".figure").html()) > 0)
+                $(".figure").html(parseInt($(".figure").html()) - 1)
+            if (parseInt($(".figure").html()) >= 6) {
+                $("#ontrack").show()
+                $("#offtrack").hide()
+            } else {
+                $("#ontrack").hide()
+                $("#offtrack").show()
+            }
+            $(".figure").css('color', '#0097A9')
+            $(".percent").css('color', '#0097A9')
+            update_numbers()
         })
-      })
+        $("#plus").click(function() {
+                if (parseInt($(".figure").html()) < 75)
+                    $(".figure").html(parseInt($(".figure").html()) + 1)
+                if (parseInt($(".figure").html()) >= 6) {
+                    $("#ontrack").show()
+                    $("#offtrack").hide()
+                } else {
+                    $("#ontrack").hide()
+                    $("#offtrack").show()
+                }
+                $(".figure").css('color', '#0097A9')
+                $(".percent").css('color', '#0097A9')
+                update_numbers()
+            })
+            // Setting up notification of dumb button
+        $(".dummy").click(function() {
+                $(this).notify("Sorry, this link is non-functional.", {
+                    position: "bottom center",
+                    autoHideDelay: 5000,
+                    className: "notify"
+                })
+            })
+            // Retrieving lookup table
+        lookup = null
+        $.get("/lookup", {
+            age: "{{age}}",
+            salary: "{{salary}}",
+            savings: "{{savings}}"
+        }, function(data) {
+            console.log(data)
+            lookup = data
+            update_numbers()
+        })
+
+
+        user_id = "{{ user_id }}"
+        name = "{{ name }}"
+        contri = parseInt("{{contri}}")
+        clicks = "y"
+        if (contri == -1) {
+            contri = 6
+            $(".figure, .percent").css("color", '#d3d3d3')
+        } else {
+            $(".figure, .percent").css("color", '#0097A9')
+        }
+        $(".figure").html(contri)
+
+
+        $("#back").one("click", function() {
+            var endTime = new Date()
+            var timeDiff = (endTime - startTime) / 1000
+            $.get("/update", {
+                user_id: user_id,
+                name: name,
+                set2_time: timeDiff,
+                clicks: clicks
+            }, function(data) {
+                $(window).off('beforeunload')
+                window.location.href = "{% url 'set1'%}" + "?user_id=" + user_id + "&name=" + name
+            })
+        })
+        $("#manual_submit").one("click", function() {
+            var endTime = new Date()
+            var timeDiff = (endTime - startTime) / 1000
+            $.get("/update", {
+                user_id: user_id,
+                name: name,
+                set2_time: timeDiff,
+                clicks: clicks
+            }, function(data) {
+                $(window).off('beforeunload')
+                window.location.href = "{% url 'set3'%}" + "?user_id=" + user_id + "&name=" + name + "&contri=" + $(".figure").html()
+            })
+        })
 
     })
-    </script>
+</script>
 
 
 </html>

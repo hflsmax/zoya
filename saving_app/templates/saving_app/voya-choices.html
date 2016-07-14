@@ -2,7 +2,8 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,10 +14,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+
 
 
     <!-- Custom styles for this template -->
@@ -24,16 +26,22 @@
 
 
     <!-- Hotjar Tracking Code for https://dry-hamlet-57387.herokuapp.com/ -->
-  <script>
-      (function(h,o,t,j,a,r){
-          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-          h._hjSettings={hjid:240473,hjsv:5};
-          a=o.getElementsByTagName('head')[0];
-          r=o.createElement('script');r.async=1;
-          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-          a.appendChild(r);
-      })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 240473,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,187 +49,210 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
+</head>
 
-  <div class="wrapper">
+<body>
 
-     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="wrapper">
 
-      <div class="container">
-        <ul class="nav navbar-nav navbar-left">
-          <li id="navbar-text"><img src="{% static 'saving_app/logo.png'%}" height=30></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="navbar-right-text dummy">Need Help?</li>
-          <li class="navbar-right-text dummy">Steps to Save</li>
-          <li class="navbar-right-text dummy">About My Plan</li>
-          <li class="navbar-right-text dummy">Important Information</li>
-        </ul>
-      </div>
-    </nav>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
 
-    <div class="container" id="main">
+            <div class="container">
+                <ul class="nav navbar-nav navbar-left">
+                    <li id="navbar-text"><img src="{% static 'saving_app/logo.png'%}" height=30></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-right-text dummy">Need Help?</li>
+                    <li class="navbar-right-text dummy">Steps to Save</li>
+                    <li class="navbar-right-text dummy">About My Plan</li>
+                    <li class="navbar-right-text dummy">Important Information</li>
+                </ul>
+            </div>
+        </nav>
 
-      <div class="row" id="row1">
-        <p id ="h1">Hi <span class="name"></span>, your employer has chosen to automatically enroll you in your plan:</p>
-        <p id = "h2">RETIREMENT SAVINGS PLAN 401(K)</p>
-      </div>
-      <div class="row" id="row2">
-        <p id ="h1">Did you know you can save more?</p>
-      </div>
+        <div class="container" id="main">
+
+            <div class="row" id="row1">
+                <p id="h1">Hi <span class="name"></span>, your employer has chosen to automatically enroll you in your plan:</p>
+                <p id="h2">RETIREMENT SAVINGS PLAN 401(K)</p>
+            </div>
+            <div class="row" id="row2">
+                <p id="h1">Please select one of the following options:</p>
+            </div>
 
 
-      <div class="row" id ="row3">
-      	<div class="col-md-4">
-      		<div id="choice">
-      			<div class="row" style="min-height: 125px">
-        			<p class="h3">I want to enroll with other choices.</p>
-        			<p id="details">Note: This enrollment will cancel your scheduled automatic enrollment.</p>
-      			</div>
-      			<div class="row">
-              <button class = "primary" id="others" type="submit">Select</button>
-      			</div>
-      		</div>
-      	</div>
-      	<div class="col-md-4">
-      		<div id="choice">
-      			<div class="row" style="min-height: 125px">
-      			<p class="h3">Let my scheduled automatic enrollment go through.</p>
-      			</div>
-      			<div class="row">
-      			<button class="primary" id="auto" data-toggle="modal" data-target="#myModal2" data-backdrop="static" >Select</button>
-      			</div>
-      		</div>
-      	</div>
-      	<div class="col-md-4">
-      		<div id="choice">
-      			<div class="row" style="min-height: 125px">
-      			<p class="h3">I do not wish to enroll.</p>
-      			</div>
-      			<div class="row" data-toggle="modal" data-target="#myModal" data-backdrop="static">
-      			<button class="primary" id="no">Select</button>
-      			</div>
-      		</div>
-      	</div>
-      </div>
+            <div class="row" id="row3">
+                <div class="col-md-4">
+                    <div id="choice">
+                        <div class="row" style="min-height: 140px; margin:0px">
+                            <p class="h3" style="padding:0px; min-height: 44px">I want to enroll at a different rate.</p>
+                            <p id="details">I want to personalize my enrollment by selecting a different savings rate.</p>
+                        </div>
+                        <div class="row">
+                            <button class="primary" id="others" type="submit">Select</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="choice">
+                        <div class="row" style="min-height: 140px; margin:0px">
+                            <p class="h3" style="padding:0px; min-height: 44px">I want to confirm my automatic enrollment.</p>
+                            <p id="details">I want to let my enrollment go through at the rate selected by my employer.</p>
+                        </div>
+                        <div class="row">
+                            <button class="primary" id="auto" data-toggle="modal" data-target="#myModal2" data-backdrop="static">Select</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="choice">
+                        <div class="row" style="min-height: 140px; margin:0px">
+                            <p class="h3" style="padding:0px; min-height: 44px">I do not want to enroll.</p>
+                            <p id="details">I want to cancel my enrollment and participate in this savings plan.</p>
+                        </div>
+                        <div class="row" data-toggle="modal" data-target="#myModal" data-backdrop="static">
+                            <button class="primary" id="no">Select</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="col-md-10" style="padding-left:0px">
+                    <p class="text"><span class="link dummy">Terms of use</span>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<span class="link dummy">Security</span> </p>
+                    <p class="text">This test site was designed by researchers at Carnegie Mellon University and City University London.</p>
+                </div>
+                <div class="col-md-2">
+                    <p class="logo"><img src="{% static 'saving_app/logo.png'%}" height=30></p>
+                </div>
+            </div>
+        </div>
+
 
     </div>
-  </div>
-
-  <div class="footer">
-    <div class="container">
-      <div class="col-md-10" style="padding-left:0px">
-         <p class="text"><span class="link dummy">Terms of use</span>&nbsp;&nbsp;&nbsp;<span style="color:#cccccc">|</span>&nbsp;&nbsp;&nbsp;<span class="link dummy">Security</span> </p>
-         <p class="text">This test site was designed by researchers at Carnegie Mellon University and City University London.</p>
-       </div>
-       <div class="col-md-2">
-         <p class="logo"><img src="{% static 'saving_app/logo.png'%}" height=30></p>
-       </div>
-     </div>
-   </div>
 
 
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <p id="h1" style="color:#f47f00; font-size:32px; font-weight:300; line-spacing:1.2; padding: 30px 80px"><span class="name"></span>, are you sure you don't want to save for retirement?</p>
-        <p id="h1" style="padding-bottom: 60px; font-size: 24px">You're passing up on the opportunity to save for your future.</p>
-        <button class="secondary button_med" style="margin-right:10px" onclick="$('#myModal').modal('toggle');">Cancel</button>
-        <button class="primary button_med" id="no_submit" style="margin-left:10px">Decline Enrollment</button>
-        <p id="details" style="padding:20px 0px">Click submit to decline enrollment and return to the survey.</p>
-      </div>
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <p id="h1" style="color:#f47f00; font-size:32px; font-weight:300; line-spacing:1.2; padding: 30px 80px"><span class="name"></span>, are you sure you don't want to save for retirement?</p>
+                <p id="h1" style="padding-bottom: 60px; font-size: 24px">You're passing up on the opportunity to save for your future.</p>
+                <button class="secondary button_med" style="margin-right:10px" onclick="$('#myModal').modal('toggle');">Cancel</button>
+                <button class="primary button_med" id="no_submit" style="margin-left:10px">Decline Enrollment</button>
+                <p id="details" style="padding:20px 0px">Click submit to decline enrollment and return to the survey.</p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div id="myModal2" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <p id="h1" style="color:#f47f00; font-size:32px; font-weight:300; line-spacing:1.2; padding: 30px 80px">Way to go!</p>
-        <p id="h1" style="padding-bottom: 60px; font-size: 24px">Your scheduled enrollment will go through.</p>
-        <button class="primary button_med" id="auto_submit" style="margin-left:10px">Close</button>
-        <p id="details" style="padding:20px 0px">Click Close to submit your choice and return to the survey.</p>
-      </div>
+    <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <p id="h1" style="color:#f47f00; font-size:32px; font-weight:300; line-spacing:1.2; padding: 30px 80px">Way to go!</p>
+                <p id="h1" style="padding-bottom: 60px; font-size: 24px">Your scheduled enrollment will go through.</p>
+                <button class="secondary button_med" style="margin-right:10px" onclick="$('#myModal').modal('toggle');">Cancel</button>
+                <button class="primary button_med" id="auto_submit" style="margin-left:10px">Close</button>
+                <p id="details" style="padding:20px 0px">Click Close to submit your choice and return to the survey.</p>
+            </div>
+        </div>
     </div>
-  </div>
 
 
-  </body>
+</body>
 
-  <script>
+<script>
     $.notify.addStyle('notify', {
-      html: "<div style='border-radius: 10px;'><span data-notify-text/></div>",
-      classes: {
-        base: {
-          "white-space": "nowrap",
-          "background-color": "#f47f00",
-          "padding": "5px"
+        html: "<div style='border-radius: 10px;'><span data-notify-text/></div>",
+        classes: {
+            base: {
+                "white-space": "nowrap",
+                "background-color": "#f47f00",
+                "padding": "5px"
+            }
         }
-      }
     })
+</script>
+<script>
+    // Other: o, auto: a, no: n
+    $(document).ready(function() {
+        var startTime = new Date();
 
-  </script>
-  <script>
-  // Other: o, auto: a, no: n
-    $(document).ready(function(){
-      var startTime = new Date();
-
-      // Setting up notification of dumb button
-      $(".dummy").click(function(){
-        $(this).notify("Sorry, this link is non-functional.",
-                        { position:"bottom center",
-                          autoHideDelay: 5000,
-                          className: "notify" })
-        }
-      )
-
-      // Setting up alert when existing
-      $(window).on('beforeunload', function(){
-        return ""
-      });
-
-      user_id = "{{ user_id }}"
-      name = "{{ name }}"
-      clicks = ""
-
-      $(".name").html(name)
-      $("#others").one("click", function(){
-        clicks += "o"
-        var endTime = new Date();
-        var timeDiff = (endTime - startTime) / 1000;
-        $.get("/update", {user_id: user_id, name: name, choice_time: timeDiff, clicks: clicks}, function(data){
-          $(window).off('beforeunload')
-          window.location.href = "{% url 'set1'%}"+"?user_id="+user_id+"&name="+name
+        // Setting up notification of dumb button
+        $(".dummy").click(function() {
+            $(this).notify("Sorry, this link is non-functional.", {
+                position: "bottom center",
+                autoHideDelay: 5000,
+                className: "notify"
+            })
         })
-      })
-      $("#auto").click(function(){
-        clicks += "a"
-      })
-      $("#no").click(function(){
-        clicks += "n"
-      })
-      $("#no_submit").one("click", function(){
-        var endTime = new Date();
-        var timeDiff = (endTime - startTime) / 1000;
-        $(window).off('beforeunload')
-        $.get("/update", {user_id: user_id, name: name, choice_time: timeDiff, clicks: clicks,
-                          final_choice: "n"}, function(data){
-          // SUBMIT TO QUALDRICS
+
+        // Setting up alert when existing
+        $(window).on('beforeunload', function() {
+            return ""
+        });
+
+        user_id = "{{ user_id }}"
+        name = "{{ name }}"
+        clicks = ""
+
+        $(".name").html(name)
+        $("#others").one("click", function() {
+            clicks += "o"
+            var endTime = new Date();
+            var timeDiff = (endTime - startTime) / 1000;
+            $.get("/update", {
+                user_id: user_id,
+                name: name,
+                choice_time: timeDiff,
+                clicks: clicks
+            }, function(data) {
+                $(window).off('beforeunload')
+                window.location.href = "{% url 'set1'%}" + "?user_id=" + user_id + "&name=" + name
+            })
         })
-      })
-      $("#auto_submit").one("click", function(){
-        var endTime = new Date();
-        var timeDiff = (endTime - startTime) / 1000;
-        $(window).off('beforeunload')
-        $.get("/update", {user_id: user_id, name: name, choice_time: timeDiff, clicks: clicks,
-                          final_choice: "a"}, function(data){
-          // SUBMIT TO QUALDRICS
+        $("#auto").click(function() {
+            clicks += "a"
         })
-      })
+        $("#no").click(function() {
+            clicks += "n"
+        })
+        $("#no_submit").one("click", function() {
+            var endTime = new Date();
+            var timeDiff = (endTime - startTime) / 1000;
+            $(window).off('beforeunload')
+            $.get("/update", {
+                user_id: user_id,
+                name: name,
+                choice_time: timeDiff,
+                clicks: clicks,
+                final_choice: "n"
+            }, function(data) {
+                $(window).off('beforeunload')
+                window.location.href = "http://cmu.qualtrics.com/SE/?SID=SV_1B4qHp4ExDwBDj7" + "&choice=3" + "&response=" + user_id+"&intervention=1"
+            })
+        })
+        $("#auto_submit").one("click", function() {
+            var endTime = new Date();
+            var timeDiff = (endTime - startTime) / 1000;
+            $(window).off('beforeunload')
+            $.get("/update", {
+                user_id: user_id,
+                name: name,
+                choice_time: timeDiff,
+                clicks: clicks,
+                final_choice: "a"
+            }, function(data) {
+                $(window).off('beforeunload')
+                window.location.href = "http://cmu.qualtrics.com/SE/?SID=SV_1B4qHp4ExDwBDj7" + "&choice=1" + "&response=" + user_id+"&intervention=1"
+            })
+        })
     })
-
-  </script>
+</script>
 
 
 

@@ -45,18 +45,30 @@ def lookup(request):
     # The largest element which is smaller than the query
     uni_ages = lk.Age.unique()
     age_thre = uni_ages[age >= uni_ages]
-    age_thre.sort()
-    age_thre = age_thre[-1]
+    if (len(age_thre) == 0):
+        uni_ages.sort()
+        age_thre = uni_ages[0]
+    else:
+        age_thre.sort()
+        age_thre = age_thre[-1]
     # The largest element which is smaller than the query
     uni_salaries = lk.Salary.unique()
     salary_thre = uni_salaries[salary >= uni_salaries]
-    salary_thre.sort()
-    salary_thre = salary_thre[-1]
+    if (len(salary_thre) == 0):
+        uni_salaries.sort()
+        salary_thre = uni_salaries[0]
+    else:
+        salary_thre.sort()
+        salary_thre = salary_thre[-1]
     # The largest element which is smaller than the query
     uni_savings = lk.Savings.unique()
     savings_thre = uni_savings[savings >= uni_savings]
-    savings_thre.sort()
-    savings_thre = savings_thre[-1]
+    if (len(savings_thre) == 0):
+        uni_savings.sort()
+        savings_thre = uni_savings[0]
+    else:
+        savings_thre.sort()
+        savings_thre = savings_thre[-1]
     small_lk = lk[(lk['Age'] == age_thre) & (lk['Salary'] == salary_thre) & (lk['Savings'] == savings_thre)]
     lk_dict = {}
     for row in small_lk.iterrows():
