@@ -100,7 +100,7 @@
             <div class="row" style="margin:0px 150px">
                 <div class="col-md-4" style="border-right: 1px solid #ddd">
                     <p class="category">You could have</p>
-                    <p class="value_1"><span class="percent" >$</span><span id="target">4,627</span></p>
+                    <p class="value_1"><span class="percent">$</span><span id="target">4,627</span></p>
                 </div>
 
                 <div class="col-md-4" style="border-right: 1px solid #ddd; padding-left:30px">
@@ -112,18 +112,20 @@
                 <div class="col-md-4" style="padding-left:30px">
 
                     <!-- Use the following if target > need -->
-                    <!-- <div class="row" style="padding-top:20px">
-    	          	<div class="col-md-3" style="padding:0px; text-align:right">
-    	          		<i class="fa fa-check-circle" aria-hidden="true" style="font-size:48px; font-weight: 800; color: #d85722"></i>
-    	          	</div>
-    	          	<div class="col-md-9" style="vertical-align:middle; padding:0px; margin-top:10px">
-    	          		<span class="category" style="color: #d85722; font-size: 20px; font-weight: 300">&nbsp;&nbsp;&nbsp;You're on Track</span>
-    	           	</div>
-               </div>
-     -->
+                    <div class="row" id="enough" style="padding-top:20px">
+                        <div class="col-md-3" style="padding:0px; text-align:right">
+                            <i class="fa fa-check-circle" aria-hidden="true" style="font-size:48px; font-weight: 800; color: #d85722"></i>
+                        </div>
+                        <div class="col-md-9" style="vertical-align:middle; padding:0px; margin-top:10px">
+                            <span class="category" style="color: #d85722; font-size: 20px; font-weight: 300">&nbsp;&nbsp;&nbsp;You're on Track</span>
+                        </div>
+                    </div>
+
                     <!-- Use the following if need > target -->
-                    <p class="category" id="gapText">You might be short</p>
-                    <p class="value_1 incorrect" id="gapFigure"><span class="percent">$</span><span id="gap">300</span></p>
+                    <div id="lack">
+                        <p class="category" id="gapText">You might be short</p>
+                        <p class="value_1 incorrect" id="gapFigure"><span class="percent">$</span><span id="gap">300</span></p>
+                    </div>
 
                 </div>
             </div>
@@ -187,12 +189,11 @@
             $("#need").html(lookup[rate]['need'])
             $("#gap").html(Math.abs(parseInt(lookup[rate]['gap'])))
             if (lookup[rate]['gap'] >= 0) {
-                $("#gapText").html("You're on track")
-                $("#gapFigure").removeClass("incorrect")
-            }
-            else {
-                $("#gapText").html("You may be short")
-                $("#gapFigure").addClass("incorrect")
+                $("#enough").show()
+                $("#lack").hide()
+            } else {
+                $("#enough").hide()
+                $("#lack").show()
             }
         }
         $("#minus").click(function() {
