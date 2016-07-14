@@ -95,11 +95,12 @@
 
                 <div class="col-md-4">
                     <!-- Contribution < 6%:  -->
-                    <div id="negFeedback" class="feedback" style="background-color: #f7f7f7">
+                    <div id="negFeedback" class="feedback" style="background-color: #f7f7f7" hidden>
                         <p style="margin-top:10px; color:#fff; font-size:16px; font-weight:400; color: #f58000">Don't Leave Money Behind</p>
                         <p style="margin: 0px 10px; color:#fff; font-size:14px; font-weight:300; color: #888">Your employer matches up to 6%.</p>
                     </div>
-                    <div id="posFeedback" class="feedback">
+                    <!-- Contribution >= 6%:  -->
+                    <div id="posFeedback" class="feedback" hidden>
         		        <p style="margin-top:10px; color:#fff; font-size:16px; font-weight:400">Great Job!</p>
         		        <p style="color:#fff; font-size:14px; font-weight:300">You're taking full advantage of your employer match.</p>
         		      </div>
