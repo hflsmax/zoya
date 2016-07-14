@@ -256,7 +256,7 @@
         $(".figure").html(contri)
 
 
-        $("#back").one("click", function() {
+        $("#back").bind("click", function() {
             var endTime = new Date()
             var timeDiff = (endTime - startTime) / 1000
             $.get("/update", {
@@ -269,7 +269,7 @@
                 window.location.href = "{% url 'set1'%}" + "?user_id=" + user_id + "&name=" + name
             })
         })
-        $("#manual_submit").one("click", function() {
+        $("#manual_submit").bind("click", function() {
             var endTime = new Date()
             var timeDiff = (endTime - startTime) / 1000
             $.get("/update", {
@@ -279,7 +279,7 @@
                 clicks: clicks
             }, function(data) {
                 $(window).off('beforeunload')
-                window.location.href = "{% url 'set3'%}" + "?user_id=" + user_id + "&name=" + name + "&contri=" + $(".figure").html()
+                window.location.href = "{% url 'set3'%}" + "?user_id=" + user_id + "&name=" + name + "&contri=" + $(".figure").html() + "&age={{age}}&salary={{salary}}&savings={{savings}}"
             })
         })
 

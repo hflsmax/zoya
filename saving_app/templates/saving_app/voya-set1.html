@@ -176,7 +176,7 @@
 
 
         // Setting up notification of dumb button
-        $(".dummy").one("click", function() {
+        $(".dummy").bind("click", function() {
             $(this).notify("Sorry, this link is non-functional.", {
                 position: "bottom center",
                 autoHideDelay: 5000,
@@ -185,7 +185,7 @@
         })
 
         $("#name").html(name)
-        $("#back").one("click", function() {
+        $("#back").bind("click", function() {
             var endTime = new Date();
             var timeDiff = (endTime - startTime) / 1000;
             $.get("/update", {

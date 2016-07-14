@@ -87,8 +87,12 @@ def set3(request):
     user_id = request.GET.get("user_id")
     name = request.GET.get("name")
     contri = request.GET.get("contri")
+    age = request.GET.get("age")
+    salary = request.GET.get("salary")
+    savings = request.GET.get("savings")
     return render(request, 'saving_app/voya-set3.html',
-                    {"user_id": user_id, "name": name, "contri": contri})
+                    {"user_id": user_id, "name": name, "contri": contri,
+                    "age": age, "salary": salary, "savings": savings})
 
 def update(request):
     user_id = request.GET.get("user_id")

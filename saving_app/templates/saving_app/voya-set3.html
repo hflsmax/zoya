@@ -95,10 +95,14 @@
 
                 <div class="col-md-4">
                     <!-- Contribution < 6%:  -->
-                    <div id="feedback" style="background-color: #f7f7f7">
+                    <div id="negFeedback" class="feedback" style="background-color: #f7f7f7">
                         <p style="margin-top:10px; color:#fff; font-size:16px; font-weight:400; color: #f58000">Don't Leave Money Behind</p>
                         <p style="margin: 0px 10px; color:#fff; font-size:14px; font-weight:300; color: #888">Your employer matches up to 6%.</p>
                     </div>
+                    <div id="posFeedback" class="feedback">
+        		        <p style="margin-top:10px; color:#fff; font-size:16px; font-weight:400">Great Job!</p>
+        		        <p style="color:#fff; font-size:14px; font-weight:300">You're taking full advantage of your employer match.</p>
+        		      </div>
 
 
                 </div>
@@ -194,9 +198,11 @@
         $(".name").html(name)
         $("#contri").html(contri)
         if (contri >= 6) {
-            $("#feedback").hide()
+            $("#negFeedback").hide()
+            $("#posFeedback").show()
         } else {
-            $("#feedback").show()
+            $("#negFeedback").show()
+            $("#posFeedback").hide()
         }
 
 
@@ -225,11 +231,11 @@
                 clicks: clicks
             }, function(data) {
                 $(window).off('beforeunload')
-                window.location.href = "{% url 'set2'%}" + "?user_id=" + user_id + "&name=" + name + "&contri=" + contri
+                window.location.href = "{% url 'set2'%}" + "?user_id=" + user_id + "&name=" + name + "&contri=" + contri+"&age={{age}}&salary={{salary}}&savings={{savings}}"
             })
         })
 
-        $("#manual_submit").one("click", function() {
+        $("#manual_submit").bind("click", function() {
             var endTime = new Date();
             var timeDiff = (endTime - startTime) / 1000;
             $.get("/update", {
