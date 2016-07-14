@@ -100,7 +100,7 @@
             <div class="row" style="margin:0px 150px">
                 <div class="col-md-4" style="border-right: 1px solid #ddd">
                     <p class="category">You could have</p>
-                    <p class="value_1"><span id="class=" percent "">$</span><span id="target">4,627</span></p>
+                    <p class="value_1"><span class="percent" >$</span><span id="target">4,627</span></p>
                 </div>
 
                 <div class="col-md-4" style="border-right: 1px solid #ddd; padding-left:30px">
@@ -122,8 +122,8 @@
                </div>
      -->
                     <!-- Use the following if need > target -->
-                    <p class="category">You might be short</p>
-                    <p class="value_1 incorrect"><span class="percent">$</span><span id="gap">300</span></p>
+                    <p class="category" id="gapText">You might be short</p>
+                    <p class="value_1 incorrect" id="gapFigure"><span class="percent">$</span><span id="gap">300</span></p>
 
                 </div>
             </div>
@@ -182,9 +182,18 @@
 
         update_numbers = function() {
             rate = $(".figure").html()
+            if (parseInt(rate) > 30) return
             $("#target").html(lookup[rate]['target'])
             $("#need").html(lookup[rate]['need'])
-            $("#gap").html(lookup[rate]['gap'])
+            $("#gap").html(Math.abs(parseInt(lookup[rate]['gap'])))
+            if (lookup[rate]['gap'] >= 0) {
+                $("#gapText").html("You're on track")
+                $("#gapFigure").removeClass("incorrect")
+            }
+            else {
+                $("#gapText").html("You may be short")
+                $("#gapFigure").addClass("incorrect")
+            }
         }
         $("#minus").click(function() {
             if (parseInt($(".figure").html()) > 0)
@@ -196,8 +205,7 @@
                 $("#ontrack").hide()
                 $("#offtrack").show()
             }
-            $(".figure").css('color', '#0097A9')
-            $(".percent").css('color', '#0097A9')
+            $("#value").css('color', '#0097A9')
             update_numbers()
         })
         $("#plus").click(function() {
@@ -210,8 +218,7 @@
                     $("#ontrack").hide()
                     $("#offtrack").show()
                 }
-                $(".figure").css('color', '#0097A9')
-                $(".percent").css('color', '#0097A9')
+                $("#value").css('color', '#0097A9')
                 update_numbers()
             })
             // Setting up notification of dumb button
@@ -241,9 +248,9 @@
         clicks = "y"
         if (contri == -1) {
             contri = 6
-            $(".figure, .percent").css("color", '#d3d3d3')
+            $("#value").css("color", '#d3d3d3')
         } else {
-            $(".figure, .percent").css("color", '#0097A9')
+            $("#value").css("color", '#0097A9')
         }
         $(".figure").html(contri)
 
