@@ -30,6 +30,8 @@ def choice(request):
         texts[0] = ("I want to enroll at a different rate.", "I want to personalize my enrollment by selecting a different savings rate.")
         texts[1] = ("I want to confirm my automatic enrollment.", "I want my auto-enrollment to go through at the savings rate chosen by my employer.")
         texts[2] = ("I do not want to enroll.", "I want to cancel my auto-enrollment and not save at this time.")
+    else:
+        return HttpResponseNotFound("<h1>Currently only support intervention from 1 to 3.</h1>")
 
     return render(request, 'saving_app/voya-choices.html',
                     {"user_id": user_id, "name": name, "texts": texts, "intervention": intervention})
