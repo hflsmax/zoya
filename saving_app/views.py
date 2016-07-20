@@ -11,9 +11,12 @@ def choice_without_id(request):
 
 def choice(request):
     # return render(request, 'saving_app/voya-choices.html', {'user_id': user_id})
-    user_id = request.GET.get("user_id")
-    name = request.GET.get("name")
-    intervention = int(request.GET.get("intervention"))
+    try:
+        user_id = request.GET.get("user_id")
+        name = request.GET.get("name")
+        intervention = int(request.GET.get("intervention"))
+    except:
+        return HttpResponseNotFound("<h1>Please specify correct paramters. These are user_id, name and intervention.</h1>")
     texts = [None] * 3
     if (intervention == 1):
         texts[0] = ("I want to enroll with other choices.", "Note: This enrollment will cancel your scheduled automatic enrollment.")
