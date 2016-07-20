@@ -98,12 +98,8 @@
                         <label for="retAge" id="fieldname">By what age do you want to retire?</label>
                         <input type="number" class="form-control" id="retAge">
                     </div>
-                </form>
-            </div>
 
-            <div class="row" id="form">
                 <div id="title">Financial Info</div>
-                <form>
                     <div class="form-group">
                         <label for="salary" id="fieldname">What is your annual salary?</label>
                         <div class="input-group">
@@ -224,6 +220,26 @@
                 )
                 return
             }
+            if (parseInt($("#age").val()) < 20 || parseInt($("#age").val()) > 80) {
+                scroll_to(
+                    $("#age").notify("Please enter a number between 20 and 80", {
+                        position: "right",
+                        autoHideDelay: 5000,
+                        className: "notify"
+                    })
+                )
+                return
+            }
+            if (parseInt($("#retAge").val()) < 20 || parseInt($("#retAge").val()) > 80) {
+                scroll_to(
+                    $("#retAge").notify("Please enter a number between 20 and 80", {
+                        position: "right",
+                        autoHideDelay: 5000,
+                        className: "notify"
+                    })
+                )
+                return
+            }
             if (parseInt($("#retAge").val()) < parseInt($("#age").val())) {
                 scroll_to(
                     $("#retAge").notify("Your retirement age is smaller than your age", {
@@ -237,6 +253,16 @@
             if (!$.isNumeric($("#salary").val())) {
                 scroll_to(
                     $("#salary").notify("Please enter a valid number", {
+                        position: "right",
+                        autoHideDelay: 5000,
+                        className: "notify"
+                    })
+                )
+                return
+            }
+            if (parseInt($("#salary").val()) <= 0) {
+                scroll_to(
+                    $("#salary").notify("Please enter a valid salary number.", {
                         position: "right",
                         autoHideDelay: 5000,
                         className: "notify"
@@ -263,7 +289,7 @@
                 clicks: clicks
             }, function(data) {
                 $(window).off('beforeunload')
-                window.location.href = "{% url 'set2'%}" + "?user_id=" + user_id + "&name=" + name + "&age=" + $("#age").val() + "&salary=" + $("#salary").val() + "&savings=" + $("#savings").val() + "&intervention={{intervention}}"
+                window.location.href = "{% url 'set2'%}" + "?user_id=" + user_id + "&name=" + name + "&age=" + parseInt($("#age").val()) + "&salary=" + parseInt($("#salary").val()) + "&savings=" + parseInt($("#savings").val()) + "&intervention={{intervention}}"
             })
         })
     })

@@ -132,7 +132,7 @@
 
 
             <div class="row" style="padding:15px; margin:0px 150px">
-                <p class="category" style="font-size:12px; color:#76c5e4">How did we come up with your number?&nbsp;&nbsp;<i class="fa fa-question-circle" aria-hidden="true" style="font-size:14px; font-weight:300"></i></p>
+                <span class="category" style="font-size:12px; color:#76c5e4; cursor: pointer;" data-toggle="modal" data-target="#myModal" data-backdrop="static">How was this calculated?&nbsp;&nbsp;<i class="fa fa-question-circle" aria-hidden="true" style="font-size:14px; font-weight:300"></i></span>
               </div>
 
 
@@ -162,6 +162,18 @@
         </div>
 
     </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <p id="title">What are the components of my future estimated income?</p>
+                <p id="details">Your <u>estimated monthly retirement income</u> goal is calculated as a percentage of your current pre-tax pay and may include multiple components, with values that we have estimated on your behalf or that you have provided to us directly.
+                    These sources include your future retirement account balance (including ongoing contributions by you and/or your employer), pension benefits, Social Security retirement benefits, and other retirement income you identify. <u>A shortfall is presented if your monthly goal amount is estimated to be less than your estimated monthly income.</u>                The estimates utilize generally accepted calculations, as well as requirements set forth by the Financial Industry Regulatory Authority (FINRA).</p>
+                <button class="primary button_med" id="auto_submit" onclick="$('#myModal').modal('toggle');">Close</button>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 
