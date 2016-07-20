@@ -86,8 +86,8 @@
                 <div class="col-md-4">
                     <div id="choice">
                         <div class="row" style="min-height: 140px; margin:0px">
-                            <p class="h3" style="padding:0px; min-height: 44px">I want to enroll at a different rate.</p>
-                            <p id="details">I want to personalize my enrollment by selecting a different savings rate.</p>
+                            <p class="h3" style="padding:0px; min-height: 44px">{{ texts.0.0 }}</p>
+                            <p id="details">{{ texts.0.1 }}</p>
                         </div>
                         <div class="row">
                             <button class="primary" id="others" type="submit">Select</button>
@@ -97,8 +97,8 @@
                 <div class="col-md-4">
                     <div id="choice">
                         <div class="row" style="min-height: 140px; margin:0px">
-                            <p class="h3" style="padding:0px; min-height: 44px">I want to confirm my automatic enrollment.</p>
-                            <p id="details">I want to let my enrollment go through at the rate selected by my employer.</p>
+                            <p class="h3" style="padding:0px; min-height: 44px">{{ texts.1.0 }}</p>
+                            <p id="details">{{ texts.1.1 }}</p>
                         </div>
                         <div class="row">
                             <button class="primary" id="auto" data-toggle="modal" data-target="#myModal2" data-backdrop="static">Select</button>
@@ -108,8 +108,8 @@
                 <div class="col-md-4">
                     <div id="choice">
                         <div class="row" style="min-height: 140px; margin:0px">
-                            <p class="h3" style="padding:0px; min-height: 44px">I do not want to enroll.</p>
-                            <p id="details">I want to cancel my enrollment and participate in this savings plan.</p>
+                            <p class="h3" style="padding:0px; min-height: 44px">{{ texts.2.0 }}</p>
+                            <p id="details">{{ texts.2.1 }}</p>
                         </div>
                         <div class="row" data-toggle="modal" data-target="#myModal" data-backdrop="static">
                             <button class="primary" id="no">Select</button>
@@ -212,7 +212,7 @@
                 clicks: clicks
             }, function(data) {
                 $(window).off('beforeunload')
-                window.location.href = "{% url 'set1'%}" + "?user_id=" + user_id + "&name=" + name
+                window.location.href = "{% url 'set1'%}" + "?user_id=" + user_id + "&name=" + name + "&intervention={{ intervention }}"
             })
         })
         $("#auto").click(function() {
@@ -233,7 +233,7 @@
                 final_choice: "n"
             }, function(data) {
                 $(window).off('beforeunload')
-                window.location.href = "http://cmu.qualtrics.com/SE/?SID=SV_1B4qHp4ExDwBDj7" + "&choice=3" + "&response=" + user_id+"&intervention=1"
+                window.location.href = "http://cmu.qualtrics.com/SE/?SID=SV_1B4qHp4ExDwBDj7" + "&choice=3" + "&response=" + user_id+"&intervention={{ intervention }}"
             })
         })
         $("#auto_submit").one("click", function() {
@@ -248,7 +248,7 @@
                 final_choice: "a"
             }, function(data) {
                 $(window).off('beforeunload')
-                window.location.href = "http://cmu.qualtrics.com/SE/?SID=SV_1B4qHp4ExDwBDj7" + "&choice=1" + "&response=" + user_id+"&intervention=1"
+                window.location.href = "http://cmu.qualtrics.com/SE/?SID=SV_1B4qHp4ExDwBDj7" + "&choice=1" + "&response=" + user_id+"&intervention={{ intervention }}"
             })
         })
     })

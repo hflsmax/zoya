@@ -13,15 +13,31 @@ def choice(request):
     # return render(request, 'saving_app/voya-choices.html', {'user_id': user_id})
     user_id = request.GET.get("user_id")
     name = request.GET.get("name")
+    intervention = int(request.GET.get("intervention"))
+    texts = [None] * 3
+    if (intervention == 1):
+        texts[0] = ("I want to enroll with other choices.", "Note: This enrollment will cancel your scheduled automatic enrollment.")
+        texts[1] = ("Let my scheduled automatic enrollment go through.", "")
+        texts[2] = ("I do not wish to enroll.", "")
+    elif (intervention == 2):
+        texts[0] = ("Do it Myself", "I want to enroll with other choices")
+        texts[1] = ("Do it for Me", "Let my scheduled auto-enrollment go through")
+        texts[2] = ("I Don't Want to Save", "I want to cancel my auto-enrollment")
+    elif (intervention == 3):
+        texts[0] = ("I want to enroll at a different rate.", "I want to personalize my enrollment by selecting a different savings rate.")
+        texts[1] = ("I want to confirm my automatic enrollment.", "I want my auto-enrollment to go through at the savings rate chosen by my employer.")
+        texts[2] = ("I do not want to enroll.", "I want to cancel my auto-enrollment and not save at this time.")
+
     return render(request, 'saving_app/voya-choices.html',
-                    {"user_id": user_id, "name": name})
+                    {"user_id": user_id, "name": name, "texts": texts, "intervention": intervention})
 
 def set1(request):
     # return render(request, 'saving_app/voya-choices.html', {'user_id': user_id})
     user_id = request.GET.get("user_id")
     name = request.GET.get("name")
+    intervention = int(request.GET.get("intervention"))
     return render(request, 'saving_app/voya-set1.html',
-                    {"user_id": user_id, "name": name})
+                    {"user_id": user_id, "name": name, "intervention": intervention})
 
 def set2(request):
     user_id = request.GET.get("user_id")
@@ -30,11 +46,12 @@ def set2(request):
     age = request.GET.get("age")
     salary = request.GET.get("salary")
     savings = request.GET.get("savings")
+    intervention = int(request.GET.get("intervention"))
     if (contri == None):
         contri = -1
     return render(request, 'saving_app/voya-set2.html',
                     {"user_id": user_id, "name": name, "contri": contri,
-                    "age": age, "salary": salary, "savings": savings})
+                    "age": age, "salary": salary, "savings": savings, "intervention": intervention})
 
 def lookup(request):
     age = int(request.GET.get("age"))
@@ -90,9 +107,10 @@ def set3(request):
     age = request.GET.get("age")
     salary = request.GET.get("salary")
     savings = request.GET.get("savings")
+    intervention = int(request.GET.get("intervention"))
     return render(request, 'saving_app/voya-set3.html',
                     {"user_id": user_id, "name": name, "contri": contri,
-                    "age": age, "salary": salary, "savings": savings})
+                    "age": age, "salary": salary, "savings": savings, "intervention": intervention})
 
 def update(request):
     user_id = request.GET.get("user_id")

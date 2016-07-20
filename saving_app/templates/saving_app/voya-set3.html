@@ -232,7 +232,7 @@
                 clicks: clicks
             }, function(data) {
                 $(window).off('beforeunload')
-                window.location.href = "{% url 'set2'%}" + "?user_id=" + user_id + "&name=" + name + "&contri=" + contri+"&age={{age}}&salary={{salary}}&savings={{savings}}"
+                window.location.href = "{% url 'set2'%}" + "?user_id=" + user_id + "&name=" + name + "&contri=" + contri+"&age={{age}}&salary={{salary}}&savings={{savings}}"+"&intervention={{intervention}}"
             })
         })
 
@@ -248,7 +248,7 @@
                 rate: contri
             }, function(data) {
                 $(window).off('beforeunload')
-                window.location.href = "http://cmu.qualtrics.com/SE/?SID=SV_1B4qHp4ExDwBDj7" + "&choice=2" + "&value=" + contri + "&response=" + user_id+"&intervention=1"
+                window.location.href = "http://cmu.qualtrics.com/SE/?SID=SV_1B4qHp4ExDwBDj7" + "&choice=2" + "&value=" + contri + "&response=" + user_id+"&intervention={{intervention}}"
             })
         })
 
