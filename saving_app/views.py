@@ -1,15 +1,20 @@
 from django.shortcuts import render
 from pymongo import MongoClient
 from django.http import HttpResponse, HttpResponseNotFound
+from django.http.request import QueryDict
 import json
 import os
 import pandas as pd
 from django.conf import settings
+import pdb
 
 def choice_without_id(request):
-    return HttpResponseNotFound("<h1>You're not suppose to be here.</h1>")
 
-def choice(request):
+    request.GET = request.GET.copy()
+    request.GET.update({'user_id': 1234, 'name': 'Max', 'intervention': 1})
+    return choice(request, alert="""alert(\"You shouldn\'t be here.\")""")
+
+def choice(request, alert=""):
     # return render(request, 'saving_app/voya-choices.html', {'user_id': user_id})
     try:
         user_id = request.GET.get("user_id")
@@ -81,7 +86,7 @@ def choice(request):
     return render(request, 'saving_app/voya-choices.html',
                     {"user_id": user_id, "name": name, "optionsText": optionsText,
                     "intervention": intervention, "extraText": extraText,
-                    "grid": grid, "optionsAttr": optionsAttr, "color": color})
+                    "grid": grid, "optionsAttr": optionsAttr, "color": color, "alert": alert})
 
 def set1(request):
     # return render(request, 'saving_app/voya-choices.html', {'user_id': user_id})
