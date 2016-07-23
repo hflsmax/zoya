@@ -552,6 +552,8 @@ html {
     width: 800px;
 }
 
+.top-buffer { margin-top:20px; }
+
 
 .red {
 	background: #FE4847;

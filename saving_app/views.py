@@ -45,7 +45,7 @@ def choice(request, alert=""):
 
     # Orientation
     if (intervention >= 9 and intervention <= 10):
-        grid = "col-sm-4 col-sm-offset-4"
+        grid = "col-sm-4 col-sm-offset-4 top-buffer"
     else:
         grid = "col-sm-4"
 
