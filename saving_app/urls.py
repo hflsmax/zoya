@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^set2/$', views.set2, name = "set2"),
     url(r'^set3/$', views.set3, name = "set3"),
     url(r'^update/$', views.update, name = "update"),
-    url(r'^lookup/$', views.lookup, name = "lookup"),
+    url(r'^lookup/$', views.lookup, name = "update"),
 ]

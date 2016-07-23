@@ -235,7 +235,7 @@ html {
 }
 
 #row1 {
-	padding-bottom:75px;
+	padding-bottom:50px;
 	text-align:center;
 	padding-top:50px;
 }
@@ -550,4 +550,19 @@ html {
 #myModal .modal-dialog
 {
     width: 800px;
+}
+
+
+.red {
+	background: #FE4847;
+	background: -webkit-linear-gradient(#FE4847,#C01A0D);
+	background: -o-linear-gradient(#FE4847, #C01A0D);    background: -moz-linear-gradient(#FE4847, #C01A0D);  background: linear-gradient(#FE4847, #C01A0D);
+}
+.green {
+	background: #24AF3F;
+	background: -webkit-linear-gradient(#24AF3F, #045410);    background: -o-linear-gradient(#24AF3F, #045410);    background: -moz-linear-gradient(#24AF3F, #045410);    background: linear-gradient(#24AF3F, #045410);
+}
+.yellow {
+	background: #FFCE52;
+	background: -webkit-linear-gradient(#FFCE52, #FEA704);    background: -o-linear-gradient(#FFCE52, #FEA704);    background: -moz-linear-gradient(#FFCE52, #FEA704);    background: linear-gradient(#FFCE52, #FEA704);
 }

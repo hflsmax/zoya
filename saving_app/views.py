@@ -17,24 +17,71 @@ def choice(request):
         intervention = int(request.GET.get("intervention"))
     except:
         return HttpResponseNotFound("<h1>Please specify correct paramters. These are user_id, name and intervention.</h1>")
-    texts = [None] * 3
     if (intervention == 1):
-        texts[0] = ("I want to enroll with other choices.", "Note: This enrollment will cancel your scheduled automatic enrollment.")
-        texts[1] = ("Let my scheduled automatic enrollment go through.", "")
-        texts[2] = ("I do not wish to enroll.", "")
+        chooseText = ("I want to enroll with other choices.", "Note: This enrollment will cancel your scheduled automatic enrollment.")
+        defaultText = ("Let my scheduled automatic enrollment go through.", "")
+        optoutText = ("I do not wish to enroll.", "")
     elif (intervention == 2):
-        texts[0] = ("Do it Myself", "I want to enroll with other choices")
-        texts[1] = ("Do it for Me", "Let my scheduled auto-enrollment go through")
-        texts[2] = ("I Don't Want to Save", "I want to cancel my auto-enrollment")
-    elif (intervention == 3):
-        texts[0] = ("I want to enroll at a different rate.", "I want to personalize my enrollment by selecting a different savings rate.")
-        texts[1] = ("I want to confirm my automatic enrollment.", "I want my auto-enrollment to go through at the savings rate chosen by my employer.")
-        texts[2] = ("I do not want to enroll.", "I want to cancel my auto-enrollment and not save at this time.")
+        chooseText = ("Do it Myself", "I want to enroll with other choices")
+        defaultText = ("Do it for Me", "Let my scheduled auto-enrollment go through")
+        optoutText = ("I Don't Want to Save", "I want to cancel my auto-enrollment")
+    elif (intervention >= 3 and intervention <= 17):
+        chooseText = ("I want to enroll at a different rate.", "I want to personalize my enrollment by selecting a different savings rate.")
+        defaultText = ("I want to confirm my automatic enrollment.", "I want my auto-enrollment to go through at the savings rate chosen by my employer.")
+        optoutText = ("I do not want to enroll.", "I want to cancel my auto-enrollment and not save at this time.")
     else:
-        return HttpResponseNotFound("<h1>Currently only support intervention from 1 to 3.</h1>")
+        return HttpResponseNotFound("<h1>Currently only support intervention from 1 to 17.</h1>")
+
+    # Extra text
+    if (intervention >= 14):
+        extraText = "You will be automatically enrolled at a contribution rate of 6 percent."
+    else:
+        extraText = ""
+
+    # Orientation
+    if (intervention >= 9 and intervention <= 10):
+        grid = "col-sm-4 col-sm-offset-4"
+    else:
+        grid = "col-sm-4"
+
+    chooseAttr = "id=others"
+    defaultAttr = """id="auto" onclick="$('#myModal2').modal({backdrop:'static'}, 'toggle');" """
+    optoutAttr = """id="no" onclick="$('#myModal').modal({backdrop:'static'}, 'toggle');" """
+    optionsAttr = [None]*3
+    optionsText = [None]*3
+    # Option position and text
+    if (intervention in [1,2,3,10,11,12,13,14,15,16,17]):
+        optionsAttr = [chooseAttr, defaultAttr, optoutAttr]
+        optionsText = [chooseText, defaultText, optoutText]
+    elif (intervention in [4, 9]):
+        optionsAttr = [defaultAttr, chooseAttr, optoutAttr]
+        optionsText = [defaultText, chooseText, optoutText]
+    elif (intervention in [5]):
+        optionsAttr = [defaultAttr, optoutAttr, chooseAttr]
+        optionsText = [defaultText, optoutText, chooseText]
+    elif (intervention in [6]):
+        optionsAttr = [chooseAttr, optoutAttr, defaultAttr]
+        optionsText = [chooseText, optoutText, defaultText]
+    elif (intervention in [7]):
+        optionsAttr = [optoutAttr, chooseAttr, defaultAttr]
+        optionsText = [optoutText, chooseText, defaultText]
+    elif (intervention in [8]):
+        optionsAttr = [optoutAttr, defaultAttr, chooseAttr]
+        optionsText = [optoutText, defaultText, chooseText]
+
+    # Option colors
+    color = [""]*3
+    if (intervention in [11, 15]):
+        color = ["", "", "red"]
+    elif (intervention in [12, 16]):
+        color = ["green", "yellow", "red"]
+    elif (intervention in [13, 17]):
+        color = ["yellow", "green", "red"]
 
     return render(request, 'saving_app/voya-choices.html',
-                    {"user_id": user_id, "name": name, "texts": texts, "intervention": intervention})
+                    {"user_id": user_id, "name": name, "optionsText": optionsText,
+                    "intervention": intervention, "extraText": extraText,
+                    "grid": grid, "optionsAttr": optionsAttr, "color": color})
 
 def set1(request):
     # return render(request, 'saving_app/voya-choices.html', {'user_id': user_id})
@@ -121,7 +168,11 @@ def update(request):
     user_id = request.GET.get("user_id")
     name = request.GET.get("name")
     client = MongoClient()
-    client = MongoClient("mongodb://heroku_8934f4g7:j254phhfmoh04ikpkl4ff9vp17@ds015325.mlab.com:15325/heroku_8934f4g7")
+
+    # client = MongoClient("mongodb://<dbuser>:<dbpassword>@ds017985-a0.mlab.com:17985,ds017985-a1.mlab.com:17985/<dbname>?replicaSet=rs-ds017985")
+    client = MongoClient(os.environ['MONGOLAB_OLIVE_URI'])
+
+    # client = MongoClient("mongodb://heroku_8934f4g7:j254phhfmoh04ikpkl4ff9vp17@ds015325.mlab.com:15325/heroku_8934f4g7")
     db = client.get_default_database()
     cursor = db.user_data.find_one({"user_id": user_id})
     if (cursor == None):
@@ -204,4 +255,15 @@ def update(request):
                 }
             }
         )
+
+    intervention = request.GET.get("intervention")
+    if (intervention != None):
+        db.user_data.update_one(
+            {"user_id": user_id}, {
+                "$set": {
+                    "intervention": intervention
+                }
+            }
+        )
+
     return HttpResponse('')
