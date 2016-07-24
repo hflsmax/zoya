@@ -39,9 +39,9 @@ def choice(request, alert=""):
 
     # Extra text
     if (intervention >= 14):
-        extraText = "You will be automatically enrolled at a contribution rate of 6 percent."
-    else:
         extraText = ""
+    else:
+        extraText = "hidden"
 
     # Orientation
     if (intervention in [9, 10]):

@@ -68,21 +68,21 @@
         <div class="container" id="main">
 
             <div class="row" id="row1" style="{{ zeroMargin }}">
-                <p id="h1">Hi <span class="name"></span>, your employer has chosen to automatically enroll you in your plan:</p>
-                <p id="h2">RETIREMENT SAVINGS PLAN 401(K)</p>
-                <div style='text-align:center; font-size:20px; font-weight:300; color:#888; margin: 30px 60px 0px 60px'>{{ extraText }}</div>
+                <p id="h1" style="{{ zeroMargin }}">Hi <span class="name"></span>, your employer has chosen to automatically enroll you in your plan:</p>
+                <p id="h2" style="{{ zeroMargin }}">RETIREMENT SAVINGS PLAN 401(K)</p>
+                <div style='text-align:center; font-size:20px; font-weight:300; color:#888; margin: 30px 60px 0px 60px' {{ extraText }}>You will be automatically enrolled at a contribution rate of 6 percent.</div>
             </div>
             <div class="row" id="row2" style="{{ zeroMargin }}">
                 <p id="h1">Please select one of the following options:</p>
             </div>
 
 
-            <div class="row" id="row3" style="{{ zeroMargin }}"> 
-                <div class="{{ grid }}">
+            <div class="row" id="row3" style="{{ zeroMargin }}">
+                <div class="{{ grid }}" style="{{ zeroMargin }}">
                     <div id="choice">
                         <div class="row" style="min-height: 140px; margin:0px; {{ zeroMargin }}">
-                            <p class="h3" style="padding:0px; min-height: 44px; {{ zeroMargin }}">{{ optionsText.0.0 }}</p>
-                            <p id="details" style="{{ zeroMargin }}">{{ optionsText.0.1 }}</p>
+                            <p class="h3" style="padding:0px; min-height: 44px;">{{ optionsText.0.0 }}</p>
+                            <p id="details">{{ optionsText.0.1 }}</p>
                         </div>
                         <div class="row">
                             <button class="primary {{ color.0 }}" {{ optionsAttr.0|safe }} >Select</button>
@@ -90,11 +90,11 @@
                     </div>
                 </div>
 
-                <div class="{{ grid }}">
+                <div class="{{ grid }}" style="{{ zeroMargin }}">
                     <div id="choice">
                         <div class="row" style="min-height: 140px; margin:0px; {{ zeroMargin }}">
-                            <p class="h3" style="padding:0px; min-height: 44px; {{ zeroMargin }}">{{ optionsText.1.0 }}</p>
-                            <p id="details" style="{{ zeroMargin }}">{{ optionsText.1.1 }}</p>
+                            <p class="h3" style="padding:0px; min-height: 44px;">{{ optionsText.1.0 }}</p>
+                            <p id="details">{{ optionsText.1.1 }}</p>
                         </div>
                         <div class="row">
                             <button class="primary {{ color.1 }}" {{ optionsAttr.1|safe }}>Select</button>
@@ -102,11 +102,11 @@
                     </div>
                 </div>
 
-                <div class="{{ grid }}">
+                <div class="{{ grid }}" style="{{ zeroMargin }}">
                     <div id="choice">
                         <div class="row" style="min-height: 140px; margin:0px; {{ zeroMargin }}">
-                            <p class="h3" style="padding:0px; min-height: 44px; {{ zeroMargin }}">{{ optionsText.2.0 }}</p>
-                            <p id="details" style="{{ zeroMargin }}">{{ optionsText.2.1 }}</p>
+                            <p class="h3" style="padding:0px; min-height: 44px;">{{ optionsText.2.0 }}</p>
+                            <p id="details">{{ optionsText.2.1 }}</p>
                         </div>
                         <div class="row">
                             <button class="primary {{ color.2 }}" {{ optionsAttr.2|safe }}>Select</button>
