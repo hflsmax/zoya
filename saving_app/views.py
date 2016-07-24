@@ -46,7 +46,7 @@ def choice(request, alert=""):
     # Orientation
     if (intervention in [9, 10]):
         grid = "col-sm-4 col-sm-offset-4 top-buffer"
-        zeroMargin = "margin-top: 4px; margin-bottom: 0; min-height: 0; padding-top: 0; padding-bottom: 0;"
+        zeroMargin = "margin-top: 11px; margin-bottom: 0; min-height: 0; padding-top: 0; padding-bottom: 0;"
     else:
         grid = "col-sm-4"
         zeroMargin = ""
