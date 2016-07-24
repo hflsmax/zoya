@@ -44,10 +44,12 @@ def choice(request, alert=""):
         extraText = ""
 
     # Orientation
-    if (intervention >= 9 and intervention <= 10):
+    if (intervention in [9, 10]):
         grid = "col-sm-4 col-sm-offset-4 top-buffer"
+        zeroMargin = "margin-top: 0; margin-bottom: 0; min-height: 0; padding-top: 0; padding-bottom: 0;"
     else:
         grid = "col-sm-4"
+        zeroMargin = ""
 
     chooseAttr = "id=others"
     defaultAttr = """id="auto" onclick="$('#myModal2').modal({backdrop:'static'}, 'toggle');" """
@@ -86,7 +88,8 @@ def choice(request, alert=""):
     return render(request, 'saving_app/voya-choices.html',
                     {"user_id": user_id, "name": name, "optionsText": optionsText,
                     "intervention": intervention, "extraText": extraText,
-                    "grid": grid, "optionsAttr": optionsAttr, "color": color, "alert": alert})
+                    "grid": grid, "optionsAttr": optionsAttr, "color": color, "alert": alert,
+                    "zeroMargin": zeroMargin})
 
 def set1(request):
     # return render(request, 'saving_app/voya-choices.html', {'user_id': user_id})
