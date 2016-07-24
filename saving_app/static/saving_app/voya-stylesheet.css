@@ -568,9 +568,3 @@ html {
 	background: #FFCE52;
 	background: -webkit-linear-gradient(#FFCE52, #FEA704);    background: -o-linear-gradient(#FFCE52, #FEA704);    background: -moz-linear-gradient(#FFCE52, #FEA704);    background: linear-gradient(#FFCE52, #FEA704);
 }
-
-.zeroMargin {
-	margin-top: 0;
-	margin-bottom: 0;
-	min-height: 0;
-}
