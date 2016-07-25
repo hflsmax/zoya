@@ -46,7 +46,7 @@ def choice(request, alert=""):
     # Orientation
     if (intervention in [9, 10]):
         grid = "col-sm-4 col-sm-offset-4 top-buffer"
-        zeroMargin = "margin-top:0; margin-bottom: 11px; min-height: 0; padding-top: 0; padding-bottom: 0;"
+        zeroMargin = "margin-top:0; margin-bottom: 4px; min-height: 0; padding-top: 0; padding-bottom: 0;"
         realZeroMargin = "margin-top:0; margin-bottom: 0; min-height: 0; padding-top: 0; padding-bottom: 0;"
         zeroMinheight = "min-height: 0;"
     else:
@@ -178,105 +178,112 @@ def set3(request):
                     "age": age, "salary": salary, "savings": savings, "intervention": intervention})
 
 def update(request):
-    user_id = request.GET.get("user_id")
-    name = request.GET.get("name")
-    client = MongoClient()
-
-    # client = MongoClient("mongodb://<dbuser>:<dbpassword>@ds017985-a0.mlab.com:17985,ds017985-a1.mlab.com:17985/<dbname>?replicaSet=rs-ds017985")
-    client = MongoClient(os.environ['MONGOLAB_OLIVE_URI'])
-
-    # client = MongoClient("mongodb://heroku_8934f4g7:j254phhfmoh04ikpkl4ff9vp17@ds015325.mlab.com:15325/heroku_8934f4g7")
-    db = client.get_default_database()
-    cursor = db.user_data.find_one({"user_id": user_id})
-    if (cursor == None):
-        db.user_data.insert_one({
-            "name": name,
-            "user_id": user_id,
-            "choice_time": 0,
-            "set1_time": 0,
-            "set2_time": 0,
-            "set3_time": 0,
-            "clicks": []
-        })
-
-    clicks = request.GET.get("clicks")
-    if (clicks != None):
-        db.user_data.update_one(
-            {"user_id": user_id}, {
-                "$push": {
-                    "clicks": clicks
-                }
-            }
-        )
-
-    choice_time = request.GET.get("choice_time")
-    if (choice_time != None):
-        db.user_data.update_one(
-            {"user_id": user_id}, {
-                "$inc": {
-                    "choice_time": float(choice_time)
-                }
-            }
-        )
-
-    set1_time = request.GET.get("set1_time")
-    if (set1_time != None):
-        db.user_data.update_one(
-            {"user_id": user_id}, {
-                "$inc": {
-                    "set1_time": float(set1_time)
-                }
-            }
-        )
-
-    set2_time = request.GET.get("set2_time")
-    if (set2_time != None):
-        db.user_data.update_one(
-            {"user_id": user_id}, {
-                "$inc": {
-                    "set2_time": float(set2_time)
-                }
-            }
-        )
-
-    set3_time = request.GET.get("set3_time")
-    if (set3_time != None):
-        db.user_data.update_one(
-            {"user_id": user_id}, {
-                "$inc": {
-                    "set3_time": float(set3_time)
-                }
-            }
-        )
-
-    rate = request.GET.get("rate")
-    if (rate != None):
-        db.user_data.update_one(
-            {"user_id": user_id}, {
-                "$set": {
-                    "rate": int(float(rate))
-                }
-            }
-        )
-
-    final_choice = request.GET.get("final_choice")
-    if (final_choice != None):
-        db.user_data.update_one(
-            {"user_id": user_id}, {
-                "$set": {
-                    "final_choice": final_choice
-                }
-            }
-        )
-
-    intervention = request.GET.get("intervention")
-    if (intervention != None):
-        db.user_data.update_one(
-            {"user_id": user_id}, {
-                "$set": {
-                    "intervention": intervention
-                }
-            }
-        )
+    # user_id = request.GET.get("user_id")
+    # name = request.GET.get("name")
+    # client = MongoClient()
+    #
+    # print "1"
+    # # client = MongoClient("mongodb://<dbuser>:<dbpassword>@ds017985-a0.mlab.com:17985,ds017985-a1.mlab.com:17985/<dbname>?replicaSet=rs-ds017985")
+    # client = MongoClient(os.environ['MONGOLAB_OLIVE_URI'])
+    #
+    # print "2"
+    #
+    # # client = MongoClient("mongodb://heroku_8934f4g7:j254phhfmoh04ikpkl4ff9vp17@ds015325.mlab.com:15325/heroku_8934f4g7")
+    # db = client.get_default_database()
+    # print "3"
+    # cursor = db.user_data.find_one({"user_id": user_id})
+    # print "3.1"
+    # if (cursor == None):
+    #     db.user_data.insert_one({
+    #         "name": name,
+    #         "user_id": user_id,
+    #         "choice_time": 0,
+    #         "set1_time": 0,
+    #         "set2_time": 0,
+    #         "set3_time": 0,
+    #         "clicks": []
+    #     })
+    # print "3.2"
+    #
+    # clicks = request.GET.get("clicks")
+    # if (clicks != None):
+    #     db.user_data.update_one(
+    #         {"user_id": user_id}, {
+    #             "$push": {
+    #                 "clicks": clicks
+    #             }
+    #         }
+    #     )
+    #
+    # choice_time = request.GET.get("choice_time")
+    # if (choice_time != None):
+    #     db.user_data.update_one(
+    #         {"user_id": user_id}, {
+    #             "$inc": {
+    #                 "choice_time": float(choice_time)
+    #             }
+    #         }
+    #     )
+    #
+    # set1_time = request.GET.get("set1_time")
+    # if (set1_time != None):
+    #     db.user_data.update_one(
+    #         {"user_id": user_id}, {
+    #             "$inc": {
+    #                 "set1_time": float(set1_time)
+    #             }
+    #         }
+    #     )
+    #
+    # set2_time = request.GET.get("set2_time")
+    # if (set2_time != None):
+    #     db.user_data.update_one(
+    #         {"user_id": user_id}, {
+    #             "$inc": {
+    #                 "set2_time": float(set2_time)
+    #             }
+    #         }
+    #     )
+    #
+    # set3_time = request.GET.get("set3_time")
+    # if (set3_time != None):
+    #     db.user_data.update_one(
+    #         {"user_id": user_id}, {
+    #             "$inc": {
+    #                 "set3_time": float(set3_time)
+    #             }
+    #         }
+    #     )
+    #
+    # rate = request.GET.get("rate")
+    # if (rate != None):
+    #     db.user_data.update_one(
+    #         {"user_id": user_id}, {
+    #             "$set": {
+    #                 "rate": int(float(rate))
+    #             }
+    #         }
+    #     )
+    #
+    # final_choice = request.GET.get("final_choice")
+    # if (final_choice != None):
+    #     db.user_data.update_one(
+    #         {"user_id": user_id}, {
+    #             "$set": {
+    #                 "final_choice": final_choice
+    #             }
+    #         }
+    #     )
+    #
+    # intervention = request.GET.get("intervention")
+    # if (intervention != None):
+    #     db.user_data.update_one(
+    #         {"user_id": user_id}, {
+    #             "$set": {
+    #                 "intervention": intervention
+    #             }
+    #         }
+    #     )
+    # print "4"
 
     return HttpResponse('')
